@@ -73,6 +73,15 @@
         min-width: 80px;
         text-align: center;
       }
+      /* Custom narrower width to match reference design */
+      .container {
+        max-width: 800px !important;
+      }
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 800px !important;
+        }
+      }
     </style>
   </head>
 
@@ -110,14 +119,16 @@
             leszhou@umd.edu
           </div>
           
-          <ul class="nav mt-3">
-            <li><a class="text-body" href="https://github.com/lesleychou" data-bs-toggle="tooltip" data-bs-title="GitHub">
-              <i class="fs-5 fa-brands fa-github"></i></a></li>
-            <li class="ms-2"><a class="text-body" href="https://www.linkedin.com/in/yajie-lesley-zhou-84515a169/" data-bs-toggle="tooltip" data-bs-title="LinkedIn">
-              <i class="fs-5 fa-brands fa-linkedin"></i></a></li>
-            <li class="ms-2"><a class="text-body" href="https://scholar.google.com/citations?user=j_tC_xsAAAAJ&hl=en" data-bs-toggle="tooltip" data-bs-title="Google Scholar">
-              <i class="fs-5 fa-brands fa-google-scholar"></i></a></li>
-          </ul>
+          <div class="d-flex align-items-center mt-3 gap-3">
+            <a class="text-body" href="https://github.com/lesleychou" data-bs-toggle="tooltip" data-bs-title="GitHub">
+              <i class="fa-brands fa-github" style="font-size: 28px;"></i></a>
+            <a class="text-body" href="https://www.linkedin.com/in/yajie-lesley-zhou-84515a169/" data-bs-toggle="tooltip" data-bs-title="LinkedIn">
+              <i class="fa-brands fa-linkedin" style="font-size: 28px;"></i></a>
+            <a class="text-body" href="https://scholar.google.com/citations?user=j_tC_xsAAAAJ&hl=en" data-bs-toggle="tooltip" data-bs-title="Google Scholar">
+              <img src="images/google_scholar.png" style="width: 28px; height: 28px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" alt="Google Scholar"></a>
+            <a class="text-body" href="https://x.com/LesleyChou339" data-bs-toggle="tooltip" data-bs-title="Twitter">
+              <img src="images/twitter.png" style="width: 28px; height: 28px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" alt="Twitter"></a>
+          </div>
         </div>
         <div>
           <img id="profile-picture" src="images/les_hompage.png" style="width: 190px; border-radius: 12px;">
