@@ -73,14 +73,88 @@
         min-width: 80px;
         text-align: center;
       }
-      /* Custom narrower width to match reference design */
+      /* Custom width for better content display */
       .container {
-        max-width: 800px !important;
+        max-width: 900px !important;
       }
       @media (min-width: 1200px) {
         .container {
-          max-width: 800px !important;
+          max-width: 1000px !important;
         }
+      }
+      
+      /* Francis-style research highlight CSS */
+      .research-highlight {
+        margin-bottom: 2rem;
+      }
+      
+      .paper-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #333;
+      }
+      
+      .paper-authors {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.3;
+      }
+      
+      .paper-authors span {
+        margin-right: 0.3rem;
+      }
+      
+      .paper-links {
+        margin-top: 0.75rem;
+      }
+      
+      .paper-links .btn {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .research-highlight-thumbnail {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        position: sticky;
+        top: 20px;
+      }
+      
+      .research-highlight-thumbnail img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      
+      .icon-link {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      
+      .icon-link:hover {
+        color: #0052a3;
+        text-decoration: none;
+      }
+      
+      .text-royalblue {
+        color: #4169e1 !important;
+      }
+      
+      .badge.bg-success-subtle {
+        background-color: #d1e7dd !important;
+        color: #0f5132 !important;
+      }
+      
+      .badge.text-bg-gold {
+        background-color: #ffd700;
+        color: #000;
+      }
+      
+      .last-p-mb-0 p:last-child {
+        margin-bottom: 0;
       }
     </style>
   </head>
@@ -95,7 +169,7 @@
         <div id="navbar-menu" class="collapse navbar-collapse">
           <div class="navbar-nav ms-auto">
             <a class="nav-link active" aria-current="page" href="#about">About</a>
-            <a class="nav-link" href="#projects">Publications</a>
+            <a class="nav-link" href="#research-highlights">Research</a>
             <a class="nav-link" href="#researches">Experience</a>
             <a class="nav-link" href="#teaching">Teaching</a>
             <a class="nav-link" href="papers/Lesley_Research_CV.pdf">CV</a>
@@ -148,54 +222,154 @@
       </p>
     </div>        
 
-    <div class="container custom-url">
+    <div class="container custom-url" id="research-highlights">
       <div class="header-medium">
-        <i class="fa-solid fa-file-text fa-fw me-2"></i>Publications
+        <i class="fa-solid fa-star-half-stroke"></i>
+        Research Highlights
       </div>
-      <div class="mb-4">
-        <div class="highlight-title">
-          <a href="https://www.usenix.org/system/files/nsdi25-mani.pdf">Securing Public Cloud Networks with Efficient Role-based Micro-Segmentation</a>
-        </div>
-        <div class="text-muted mb-2">
-          Sathiya Kumaran Mani, Kevin Hsieh, Santiago Segarra, Ranveer Chandra, <span class="highlight-content">Yajie Zhou*</span>, Srikanth Kandula
-        </div>
-        <div class="text-muted"><i>USENIX NSDI 2025</i></div>
-      </div>
+      <hr>
       
-      <div class="mb-4">
-        <div class="highlight-title">
-          <a href="https://conferences.sigcomm.org/hotnets/2023/papers/hotnets23_zhou.pdf">Towards Interactive Research Agents for Internet Incident Investigation</a>
+      <!-- NSDI 2025 Publication -->
+      <div class="research-highlight" id="microseg-nsdi25">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>NSDI '25</i></span></div>
+              <a href="#microseg-nsdi25" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">Securing Public Cloud Networks with Efficient Role-based Micro-Segmentation</div>
+            <div class="paper-authors mt-1">
+              <span>Sathiya Kumaran Mani</span>, <span>Kevin Hsieh</span>, <span>Santiago Segarra</span>, <span>Ranveer Chandra</span>, <span><strong>Yajie Zhou</strong></span>, <span>Srikanth Kandula</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://www.usenix.org/system/files/nsdi25-mani.pdf"><i class="fa-regular fa-file-lines"></i> Paper</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#microseg-nsdi25-summary" aria-expanded="false" aria-controls="microseg-nsdi25-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="microseg-nsdi25-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>This paper presents an efficient approach to role-based micro-segmentation for securing public cloud networks. [Summary placeholder - please provide detailed summary for this publication]</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/placeholder-figure.png" alt="Micro-segmentation Figure">
+          </div>
         </div>
-        <div class="text-muted mb-2">
-          <span class="highlight-content">Yajie Zhou*</span>, Nengneng Yu, Zaoxing Liu
-        </div>
-        <div class="text-muted"><i>ACM HotNets 2023</i></div>
       </div>
+      <hr>
       
-      <div class="mb-4">
-        <div class="highlight-title">
-          <a href="https://conferences.sigcomm.org/hotnets/2023/papers/hotnets23_mani_zhou.pdf">Enhancing Network Management Using Code Generated by Large Language Models</a>
+      <!-- HotNets 2023 - Interactive Research Agents -->
+      <div class="research-highlight" id="agents-hotnets23">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>HotNets '23</i></span></div>
+              <a href="#agents-hotnets23" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">Towards Interactive Research Agents for Internet Incident Investigation</div>
+            <div class="paper-authors mt-1">
+              <span><strong>Yajie Zhou</strong></span>, <span>Nengneng Yu</span>, <span>Zaoxing Liu</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://conferences.sigcomm.org/hotnets/2023/papers/hotnets23_zhou.pdf"><i class="fa-regular fa-file-lines"></i> Paper</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#agents-hotnets23-summary" aria-expanded="false" aria-controls="agents-hotnets23-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="agents-hotnets23-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>This paper explores the development of interactive research agents for automated internet incident investigation. [Summary placeholder - please provide detailed summary for this publication]</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/placeholder-figure.png" alt="Research Agents Figure">
+          </div>
         </div>
-        <div class="text-muted mb-2">
-          Sathiya Kumaran Mani, <span class="highlight-content">Yajie Zhou*</span>, Kevin Hsieh, Santiago Segarra, Trevor Eberl, Eliran Azulai, Ido Frizler, Ranveer Chandra, Srikanth Kandula
-        </div>
-        <div class="text-muted"><i>ACM HotNets 2023</i></div>
       </div>
+      <hr>
       
-      <div class="mb-4">
-        <div class="highlight-title">
-          <a href="https://dl.acm.org/doi/pdf/10.1145/3544216.3544243">Genet: Automatic Curriculum Generation for Learning Adaptation in Networking</a>
+      <!-- HotNets 2023 - LLM Code Generation -->
+      <div class="research-highlight" id="llmcode-hotnets23">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>HotNets '23</i></span></div>
+              <a href="#llmcode-hotnets23" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">Enhancing Network Management Using Code Generated by Large Language Models</div>
+            <div class="paper-authors mt-1">
+              <span>Sathiya Kumaran Mani</span>, <span><strong>Yajie Zhou</strong></span>, <span>Kevin Hsieh</span>, <span>Santiago Segarra</span>, <span>Trevor Eberl</span>, <span>Eliran Azulai</span>, <span>Ido Frizler</span>, <span>Ranveer Chandra</span>, <span>Srikanth Kandula</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://conferences.sigcomm.org/hotnets/2023/papers/hotnets23_mani_zhou.pdf"><i class="fa-regular fa-file-lines"></i> Paper</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#llmcode-hotnets23-summary" aria-expanded="false" aria-controls="llmcode-hotnets23-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="llmcode-hotnets23-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>This paper investigates how large language models can be leveraged to generate code for network management tasks, enhancing operational efficiency. [Summary placeholder - please provide detailed summary for this publication]</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/placeholder-figure.png" alt="LLM Code Generation Figure">
+          </div>
         </div>
-        <div class="text-muted mb-2">
-          Zhengxu Xia*, <span class="highlight-content">Yajie Zhou*</span>, Francis Y. Yan, Junchen Jiang (*co-first author)
-        </div>
-        <div class="text-muted mb-2"><i>ACM SIGCOMM August 2022</i></div>
-        <div class="text-muted mb-2">
-          <i class="fa-solid fa-video fa-fw"></i>
-          <a href="https://www.youtube.com/watch?v=VdCYPc0fybI&list=PLU4C2_kotFP2rg92oGchLFN0Y7F3liFio&index=23">SIGCOMM-Genet Talk</a>
-        </div>
-        <div class="mt-2 p-3 bg-light rounded">
-          <strong>Summary for Genet:</strong> Genet is a novel training framework that enhances the performance and generalization of reinforcement learning (RL) algorithms in networking and systems. Genet builds on curriculum learning with judicious use of rule-based baselines. It substantially improves the performance and generalization of simulation-trained RL algorithms under unseen workloads and in real environments.
+      </div>
+      <hr>
+      
+      <!-- Genet SIGCOMM 2022 - Copy from Francis page -->
+      <div class="research-highlight" id="genet-sigcomm22">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>SIGCOMM '22</i></span></div>
+              <a href="#genet-sigcomm22" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">Genet: Automatic Curriculum Generation for Learning Adaptation in Networking</div>
+            <div class="paper-authors mt-1">
+              <span>Zhengxu Xia*</span>, <span><strong>Yajie Zhou*</strong></span>, <span>Francis Y. Yan</span>, <span>Junchen Jiang</span>
+              (*equal contribution)
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://dl.acm.org/doi/pdf/10.1145/3544216.3544243"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="/documents/genet-sigcomm22.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/GenetProject/Genet"><i class="fa-solid fa-code"></i> Code</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://youtu.be/VdCYPc0fybI?si=MB8ieZ9nQq_QAe0X"><i class="fa-regular fa-circle-play"></i> Video</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#genet-sigcomm22-summary" aria-expanded="false" aria-controls="genet-sigcomm22-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="genet-sigcomm22-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>Despite a flurry of RL-based network (or system) policies in the literature, their generalization remains a predominant concern for practitioners. These RL algorithms are largely trained in simulation, thus making them vulnerable to the notorious "sim-to-real" gap when tested in the real world.</p>
+                    <p>In this work, we developed a training framework called <b>Genet</b> for generalizing RL-based network (or system) policies. Genet employs a technique known as curriculum learning, automatically searching for a sequence of increasingly difficult ("rewarding") environments to train the model next. To measure the difficulty of a training environment, we tap into traditional heuristic baselines in each domain and define difficulty as the performance gap between these heuristics and the RL model. Results from three case studies — ABR, congestion control, and load balancing — showed that Genet was able to produce RL policies with enhanced generalization.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/genet-sigcomm22.png" alt="Genet Framework">
+          </div>
         </div>
       </div>
     </div>
