@@ -156,6 +156,25 @@
       .last-p-mb-0 p:last-child {
         margin-bottom: 0;
       }
+      
+      .text-darkred {
+        color: #8b0000 !important;
+      }
+      
+      .text-darkred:hover {
+        color: #a52a2a !important;
+        text-decoration: underline;
+      }
+      
+      .news-list a {
+        font-family: 'Inter', sans-serif;
+        font-weight: 400;
+        text-decoration: none;
+      }
+      
+      .news-list a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
 
@@ -185,7 +204,7 @@
           <h3 class="mt-3 mb-4">
             <span id="name-divider">Lesley (Yajie) Zhou</span>
           </h3>
-          <p>4th Year PhD Student<br>
+          <p>5th Year PhD Student<br>
           University of Maryland, College Park (UMD)<br>
           Advised by <a href="https://zaoxing.github.io/">Prof. Alan Liu</a></p>
           
@@ -216,7 +235,7 @@
         <i class="fa-regular fa-id-card fa-fw me-2"></i>About me
       </div>
       <p>
-        I am a 4th Year PhD student at University of Maryland, College Park (UMD), advised by <a href="https://zaoxing.github.io/">Prof. Alan Liu</a>. We are working on self-driving networking systems with practical ML-powered approaches, where we focus on improving the robustness and reliability of the system.
+        I am a 5th Year PhD student at University of Maryland, College Park (UMD), advised by <a href="https://zaoxing.github.io/">Prof. Alan Liu</a>. We are working on self-driving networking systems with practical ML-powered approaches, where we focus on improving the robustness and reliability of the system.
       </p>
       <p>
         Prior to my PhD studies, I received my M.S. degree from <a href="https://www.kaist.ac.kr/en/">KAIST</a>, and my B.S. degree from <a href="https://en.xidian.edu.cn/">Xidian University</a> in China, majoring in Computer Science.
@@ -225,24 +244,28 @@
 
     <div class="container custom-url">
       <div class="header-medium">
-        <i class="fa-solid fa-newspaper fa-fw me-2"></i>Recent News
+        <i class="fa-solid fa-bullhorn fa-fw me-2"></i>Recent News
       </div>
-      <div class="news-list">
+      <div class="news-list custom-url">
         <div class="d-flex">
-          <span class="badge bg-primary text-white">Jan 2025</span>
-          <div>NetPress paper released on arXiv! Check out our <a href="https://www.netpress.ai/">leaderboard</a> for LLM benchmarking in network applications.</div>
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Oct 2025</span></div>
+            <div>Just moved to Pittsburgh. I will be a visiting researcher at CMU's <a href="https://www.cylab.cmu.edu/">CyLab</a> with <a href="https://users.ece.cmu.edu/~vsekar/">Prof. Vyas Sekar</a>. Thanks to advisors for the great opportunity, and looking forward to meeting new folks here!</div>
         </div>
         <div class="d-flex">
-          <span class="badge bg-success text-white">Dec 2024</span>
-          <div>Paper on micro-segmentation accepted to <strong>NSDI 2025</strong>!</div>
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Sep 2025</span></div>
+          <div>The following up work of our HotNets'23 paper "MeshAgent: Enabling Reliable Network Management with Large Language Models" is accepted at <strong>SIGMETRICS '26</strong>.</div>
         </div>
         <div class="d-flex">
-          <span class="badge bg-info text-white">Nov 2024</span>
-          <div>Invited to serve on the <strong>EuroSys 2026</strong> Shadow Program Committee.</div>
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jan 2025</span></div>
+            <div><strong>NetPress</strong> released on arXiv! Check out our <a href="https://www.netpress.ai/" class="text-darkred">leaderboard</a> for dynamically generated LLM benchmarks in network applications.</div>
         </div>
         <div class="d-flex">
-          <span class="badge bg-warning text-dark">Oct 2023</span>
-          <div>Two papers accepted to <strong>HotNets 2023</strong>!</div>
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Dec 2024</span></div>
+          <div>My internship project on securing cloud networks with micro-segmentation is accepted at <strong>NSDI '25</strong>. Congrats and thanks to all the mentors there!</div>
+        </div>
+        <div class="d-flex">
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Oct 2023</span></div>
+          <div>Two papers on developing LLM agents to improve network systems are accepted at <strong>HotNets '23</strong>!</div>
         </div>
       </div>
     </div>
