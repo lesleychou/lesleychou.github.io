@@ -216,7 +216,7 @@
           <div class="d-flex align-items-center mt-3 gap-3">
             <a class="text-body" href="https://github.com/lesleychou" data-bs-toggle="tooltip" data-bs-title="GitHub">
               <i class="fa-brands fa-github" style="font-size: 28px;"></i></a>
-            <a class="text-body" href="https://www.linkedin.com/in/yajie-lesley-zhou-84515a169/" data-bs-toggle="tooltip" data-bs-title="LinkedIn">
+            <a class="text-body" href="https://www.linkedin.com/in/lesley-yajie-zhou-84515a169/" data-bs-toggle="tooltip" data-bs-title="LinkedIn">
               <i class="fa-brands fa-linkedin" style="font-size: 28px;"></i></a>
             <a class="text-body" href="https://scholar.google.com/citations?user=j_tC_xsAAAAJ&hl=en" data-bs-toggle="tooltip" data-bs-title="Google Scholar">
               <img src="images/google_scholar.png" style="width: 28px; height: 28px; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" alt="Google Scholar"></a>
@@ -300,9 +300,9 @@
               <div class="collapse mt-2 custom-url" id="netpress-arxiv25-summary">
                 <div class="card text-bg-light">
                   <div class="card-body px-3 py-2 last-p-mb-0">
-                    <p>Despite growing interest in domain-specific benchmarking of large language models (LLMs) and agents, current evaluations remain limited to static, small-scale datasets, especially in high-stakes tasks like network operations that demand reliability for deployments. We present <b>NetPress</b>, an automated benchmark generation framework for evaluating LLM agents in network applications.</p>
-                    <p>NetPress introduces a unified abstraction with state and action, enabling dynamic generation of diverse query sets along with corresponding ground truths. At runtime, users can specify benchmark configurations to generate millions of queries on the fly. In addition to dynamic benchmark construction, NetPress integrates with network emulators to provide realistic environment feedback, supporting comprehensive evaluation across correctness, safety, and latency.</p>
-                    <p>We instantiate NetPress on three representative applications: datacenter capacity planning, routing misconfiguration, and microservice policy troubleshooting. Our evaluation reveals that across all three network tasks, the average agent correctness is only around 24%, with the best agent still below 60%. NetPress enables automated large-scale evaluation, significantly improving evaluation reliability and enabling fine-grained analysis of agent behavior across multiple dimensions.</p>
+                    <p>As LLMs expand into high-stakes domains like network system operations, evaluating their real-world reliability becomes increasingly critical. However, existing benchmarks risk contamination due to static design, show high statistical variance from limited dataset size, and fail to reflect the complexity of production environments.</p>
+                    <p>We introduce <strong>NetPress</strong>, a dynamic benchmark generation framework for network applications. NetPress features a novel abstraction and unified interface that generalizes across applications, effectively addressing the challenges of dynamic benchmarking posed by the diversity of network tasks. At runtime, users can generate unlimited queries on demand. NetPress integrates with network emulators to provide execution-time feedback on correctness, safety, and latency.</p>
+                    <p>We demonstrate NetPress on three representative applications and find that (1) it significantly improve statistical reliability among LLM agents (confidence interval overlap reduced from 85% to 0), (2) agents achieve only 13–38% average performance (as low as 3%) for large-scale, realistic queries, (3) it reveals finer-grained behaviors missed by static, correctness-only benchmarks. NetPress also enables use cases such as SFT and RL fine-tuning on network system tasks.</p>
                   </div>
                 </div>
               </div>
@@ -339,7 +339,8 @@
               <div class="collapse mt-2 custom-url" id="microseg-nsdi25-summary">
                 <div class="card text-bg-light">
                   <div class="card-body px-3 py-2 last-p-mb-0">
-                    <p>This paper presents an efficient approach to role-based micro-segmentation for securing public cloud networks. [Summary placeholder - please provide detailed summary for this publication]</p>
+                    <p>Securing network traffic within data centers is a critical and daunting challenge due to the increasing complexity and scale of modern public clouds. Micro-segmentation offers a promising solution by implementing fine-grained, workload-specific network security policies to mitigate potential attacks. However, the dynamic nature and large scale of deployments present significant obstacles in crafting precise security policies, limiting the practicality of this approach.</p>
+                    <p>To address these challenges, we introduce a novel system that efficiently processes vast volumes of network flow logs and effectively infers the roles of network endpoints. Our method integrates domain knowledge and communication patterns in a principled manner, facilitating the creation of micro-segmentation policies at a large scale.</p>
                   </div>
                 </div>
               </div>
@@ -376,7 +377,8 @@
               <div class="collapse mt-2 custom-url" id="agents-hotnets23-summary">
                 <div class="card text-bg-light">
                   <div class="card-body px-3 py-2 last-p-mb-0">
-                    <p>This paper explores the development of interactive research agents for automated internet incident investigation. [Summary placeholder - please provide detailed summary for this publication]</p>
+                    <p>Investigating Internet incidents involves significant human effort and is limited by the domain knowledge of network researchers and operators. In this paper, we propose to develop computational software agents based on emerging language models (e.g., GPT-4) that can simulate the behaviors of knowledgeable researchers to assist in investigating certain Internet incidents and understanding their impacts.</p>
+                    <p>Our agent training framework uses Auto-GPT as an autonomous interface to interact with GPT-4 and gain knowledge by memorizing related information retrieved from online resources. The agent uses the model to reason the investigation questions and continuously performs knowledge testing to see if the conclusion is sufficiently confident or more information is needed.</p>
                   </div>
                 </div>
               </div>
@@ -413,7 +415,8 @@
               <div class="collapse mt-2 custom-url" id="llmcode-hotnets23-summary">
                 <div class="card text-bg-light">
                   <div class="card-body px-3 py-2 last-p-mb-0">
-                    <p>This paper investigates how large language models can be leveraged to generate code for network management tasks, enhancing operational efficiency. [Summary placeholder - please provide detailed summary for this publication]</p>
+                    <p>Analyzing network topologies and communication graphs is essential in modern network management. However, the lack of a cohesive approach results in a steep learning curve, increased errors, and inefficiencies.</p>
+                    <p>In this paper, we present a novel approach that enables natural-language-based network management experiences, leveraging LLMs to generate task-specific code from natural language queries. This method addresses the challenges of explainability, scalability, and privacy by allowing network operators to inspect the generated code, removing the need to share network data with LLMs, and focusing on application-specific requests combined with program synthesis techniques.</p>
                   </div>
                 </div>
               </div>
@@ -580,9 +583,11 @@
     <div class="container custom-url">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 mt-5 border-top">
         <div>
-          <span class="mb-3 text-body-secondary">&copy; 2024 Lesley (Yajie) Zhou. All rights reserved.</span>
+          <span class="mb-3 text-body-secondary">&copy; 2025 Lesley (Yajie) Zhou. All rights reserved.</span>
           <br>
-          <span class="text-body-secondary">This page was created using <a href="http://pages.github.com">GitHub Pages</a>. Last Update: Dec, 2024</span>
+          <span class="text-body-secondary">This page was created using <a href="http://pages.github.com">GitHub Pages</a>. Last Update: Oct, 2025</span>
+          <br>
+          <span class="text-body-secondary" style="font-size: 0.8rem;">Website template inspired by <a href="https://fyy.cs.illinois.edu/">Francis Y. Yan</a></span>
         </div>
         <div>
           <i class="fa-solid fa-envelope fa-fw"></i>
