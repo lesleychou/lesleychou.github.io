@@ -127,6 +127,36 @@
         height: auto;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+      
+      .research-highlight-thumbnail img:hover {
+        transform: scale(1.05);
+      }
+      
+      /* Custom hover scales for individual figures */
+      .meshagent-fig:hover {
+        transform: scale(2.4) !important;
+      }
+      
+      .netpress-fig:hover {
+        transform: scale(1.5) !important;
+      }
+      
+      .microseg-fig:hover {
+        transform: scale(1.5) !important;
+      }
+      
+      .agents-fig:hover {
+        transform: scale(1.5) !important;
+      }
+      
+      .llmcode-fig:hover {
+        transform: scale(1.6) !important;
+      }
+      
+      .genet-fig:hover {
+        transform: scale(1.1) !important;
       }
       
       .icon-link {
@@ -248,8 +278,12 @@
       </div>
       <div class="news-list custom-url">
         <div class="d-flex">
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Nov 2025</span></div>
+          <div>Honored to be selected for the <a href="https://www.kaust.edu.sa/events/rsais26/">KAUST Rising Stars in AI Symposium 2026</a> (top 10%). Excited to connect with fellow researchers at the symposium!</div>
+        </div>
+        <div class="d-flex">
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Oct 2025</span></div>
-            <div>Just moved to Pittsburgh. I will be a visiting researcher at CMU's <a href="https://www.cylab.cmu.edu/">CyLab</a> with <a href="https://users.ece.cmu.edu/~vsekar/">Prof. Vyas Sekar</a>. Thanks to advisors for the great opportunity, and looking forward to meeting new folks here!</div>
+             <div>I am a visiting researcher at CMU's <a href="https://www.cylab.cmu.edu/">CyLab</a> with <a href="https://users.ece.cmu.edu/~vsekar/">Prof. Vyas Sekar</a>. Thanks to advisors for the great opportunity. Looking forward to meeting new folks here!</div>
         </div>
         <div class="d-flex">
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Sep 2025</span></div>
@@ -288,11 +322,13 @@
               <span><strong>Yajie Zhou</strong></span>, <span>Kevin Hsieh</span>, <span>Sathiya Kumaran Mani</span>, <span>Srikanth Kandula</span>, <span>Zaoxing Liu</span>
             </div>
             <div class="paper-links mt-1">
-              <a role="button" class="btn btn-sm btn-outline-dark disabled" href="#" aria-disabled="true"><i class="fa-regular fa-file-lines"></i> Paper (To be updated)</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://dl.acm.org/doi/pdf/10.1145/3771567"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/meshagent-sigmetrics26.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/Froot-NetSys/MeshAgent"><i class="fa-solid fa-code"></i> Code</a>
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <!-- Placeholder for future image -->
+            <img src="images/meshagent_design.png" alt="MeshAgent Design Figure" class="meshagent-fig">
           </div>
         </div>
       </div>
@@ -332,7 +368,7 @@
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/netpress.png" alt="NetPress Framework Figure">
+            <img src="images/netpress.png" alt="NetPress Framework Figure" class="netpress-fig">
           </div>
         </div>
       </div>
@@ -370,7 +406,7 @@
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/micro_seg.png" alt="Micro-segmentation Figure">
+            <img src="images/micro_seg.png" alt="Micro-segmentation Figure" class="microseg-fig">
           </div>
         </div>
       </div>
@@ -408,7 +444,7 @@
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/hotnets_agent_overview.png" alt="Research Agents Figure">
+            <img src="images/hotnets_agent_overview.png" alt="Research Agents Figure" class="agents-fig">
         </div>
         </div>
       </div>
@@ -446,7 +482,7 @@
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/hotnets_copilot.png" alt="LLM Code Generation Figure">
+            <img src="images/hotnets_copilot.png" alt="LLM Code Generation Figure" class="llmcode-fig">
         </div>
         </div>
       </div>
@@ -486,7 +522,7 @@
         </div>
         </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/genet-sigcomm22.png" alt="Genet Framework">
+            <img src="images/genet-sigcomm22.png" alt="Genet Framework" class="genet-fig">
         </div>
         </div>
       </div>
@@ -548,10 +584,17 @@
       </div>
       <div class="card">
         <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fa-solid fa-star text-warning fa-2x me-3"></i>
+            <div>
+              <strong><a href="https://www.kaust.edu.sa/events/rsais26/">KAUST Rising Stars in AI Symposium</a></strong>
+              <div class="text-muted">2026 (Top 10%)</div>
+            </div>
+          </div>
           <div class="d-flex align-items-center">
             <i class="fa-solid fa-medal text-warning fa-2x me-3"></i>
             <div>
-              <strong>N2Women Young Researcher Fellowship</strong>
+              <strong><a href="https://n2women.comsoc.org/fellowships/">N2Women Young Researcher Fellowship</a></strong>
               <div class="text-muted">2022</div>
             </div>
           </div>
