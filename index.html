@@ -326,6 +326,20 @@
               <a role="button" class="btn btn-sm btn-outline-dark" href="documents/meshagent-sigmetrics26.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
               <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/Froot-NetSys/MeshAgent"><i class="fa-solid fa-code"></i> Code</a>
             </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#meshagent-sigmetrics26-summary" aria-expanded="false" aria-controls="meshagent-sigmetrics26-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="meshagent-sigmetrics26-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>The emergence of LLMs offers great promise for building domain-specific agents, but adapting them for network management remains challenging. To understand why, we conduct a case study on network management tasks and find that state-of-the-art specialization techniques rely heavily on extensive, high-quality task-specific data to produce precise solutions. However, real-world network queries are often diverse and unpredictable, making such techniques difficult to scale.</p>
+                    <p>Motivated by this gap, we propose <strong>MeshAgent</strong>, a new workflow that improves precision by extracting domain-specific invariants from sample queries and encoding them as constraints. These constraints guide LLM's generation and validation process, narrowing the search space and enabling low-effort adaptation. We evaluate our method across three network management applications and a user study involving industrial network professionals, showing that it complements existing techniques and consistently improves accuracy. We also introduce reliability metrics and demonstrate that our system is more dependable, with the ability to abstain when confidence is low.</p>
+                    <p>Overall, our results show that MeshAgent achieves over 95% accuracy, reaching 100% when paired with fine-tuned agents, and improves accuracy by up to 26% compared to baseline methods. The extraction of reusable invariants provides a practical and scalable alternative to traditional LLM specialization, enabling the development of more reliable agents for real-world network management.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
             <img src="images/meshagent_design.png" alt="MeshAgent Design Figure" class="meshagent-fig">
