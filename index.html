@@ -278,6 +278,10 @@
       </div>
       <div class="news-list custom-url">
         <div class="d-flex">
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jan 2026</span></div>
+          <div><strong>NetArena</strong> (arXiv version as NetPress) is accepted at <strong>ICLR '26</strong>!</div>
+        </div>
+        <div class="d-flex">
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Dec 2025</span></div>
           <div><strong>Tidal</strong> is accepted at <a href="https://nines-conference.org/">NINeS '26</a>. Very excited to see the first <a href="https://nines-conference.org/">NINeS conference</a> dedicated to new ideas in networked systems!</div>
         </div>
@@ -316,7 +320,46 @@
       <div class="header-medium">
         <i class="fa-solid fa-file-text fa-fw me-2"></i>Publications
       </div>
-
+      
+      <!-- NetArena ICLR 2026 Publication -->
+      <div class="research-highlight" id="netarena-iclr26">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>ICLR '26</i></span></div>
+              <a href="#netarena-iclr26" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">NetArena: Dynamically Generated LLM Benchmarks for Network Applications</div>
+            <div class="paper-authors mt-1">
+              <span><strong>Yajie Zhou</strong></span>, <span>Jiajun Ruan</span>, <span>Eric S. Wang</span>, <span>Sadjad Fouladi</span>, <span>Francis Y. Yan</span>, <span>Kevin Hsieh</span>, <span>Zaoxing Liu</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://arxiv.org/pdf/2506.03231"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/netpress-arxiv25.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/Froot-NetSys/NetPress"><i class="fa-solid fa-code"></i> Code</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://www.netpress.ai/"><i class="fa-solid fa-chart-line"></i> Leaderboard</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#netarena-iclr26-summary" aria-expanded="false" aria-controls="netarena-iclr26-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="netarena-iclr26-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>As LLMs expand into high-stakes domains like network system operations, evaluating their real-world reliability becomes increasingly critical. However, existing benchmarks risk contamination due to static design, show high statistical variance from limited dataset size, and fail to reflect the complexity of production environments.</p>
+                    <p>We introduce <strong>NetArena</strong>, a dynamic benchmark generation framework for network applications. NetArena features a novel abstraction and unified interface that generalizes across applications, effectively addressing the challenges of dynamic benchmarking posed by the diversity of network tasks. At runtime, users can generate unlimited queries on demand. NetArena integrates with network emulators to provide execution-time feedback on correctness, safety, and latency.</p>
+                    <p>We demonstrate NetArena on three representative applications and find that (1) it significantly improve statistical reliability among LLM agents (confidence interval overlap reduced from 85% to 0), (2) agents achieve only 13–38% average performance (as low as 3%) for large-scale, realistic queries, (3) it reveals finer-grained behaviors missed by static, correctness-only benchmarks. NetArena also enables use cases such as SFT and RL fine-tuning on network system tasks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/netpress.png" alt="NetArena Framework Figure" class="netpress-fig">
+          </div>
+        </div>
+      </div>
+      <hr>
 
       <!-- NINeS 2026 Publication -->
       <div class="research-highlight" id="conceptdrift-nines26">
@@ -331,7 +374,7 @@
               <span><strong>Yajie Zhou</strong></span>, <span>Nengneng Yu</span>, <span>Tuo Zhao</span>, <span>Zaoxing Liu</span>
             </div>
             <div class="paper-links mt-1">
-              <a role="button" class="btn btn-sm btn-outline-dark disabled" href="#" aria-disabled="true"><i class="fa-regular fa-file-lines"></i> Paper (To be appear)</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://nines-conference.org/papers/p001-Zhou.pdf"><i class="fa-regular fa-file-lines"></i> Paper</a>
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
@@ -403,45 +446,6 @@
       </div>
       <hr>
       
-      <!-- NetPress arXiv 2025 Publication -->
-      <div class="research-highlight" id="netpress-arxiv25">
-        <div class="row g-0">
-          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
-            <div class="d-flex flex-wrap gap-1">
-              <div><span class="badge bg-info-subtle border border-info-subtle text-info-emphasis"><i>arXiv '25</i></span></div>
-              <a href="#netpress-arxiv25" class="anchor-link"></a>
-            </div>
-            <div class="paper-title mt-1">NetPress: Dynamically Generated LLM Benchmarks for Network Applications</div>
-            <div class="paper-authors mt-1">
-              <span><strong>Yajie Zhou</strong></span>, <span>Jiajun Ruan</span>, <span>Eric S. Wang</span>, <span>Sadjad Fouladi</span>, <span>Francis Y. Yan</span>, <span>Kevin Hsieh</span>, <span>Zaoxing Liu</span>
-            </div>
-            <div class="paper-links mt-1">
-              <a role="button" class="btn btn-sm btn-outline-dark" href="https://arxiv.org/pdf/2506.03231"><i class="fa-regular fa-file-lines"></i> Paper</a>
-              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/netpress-arxiv25.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
-              <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/Froot-NetSys/NetPress"><i class="fa-solid fa-code"></i> Code</a>
-              <a role="button" class="btn btn-sm btn-outline-dark" href="https://www.netpress.ai/"><i class="fa-solid fa-chart-line"></i> Leaderboard</a>
-            </div>
-            <div class="mt-3">
-              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#netpress-arxiv25-summary" aria-expanded="false" aria-controls="netpress-arxiv25-summary">
-                Read summary <i class="fa-solid fa-angle-right bi"></i>
-              </a>
-              <div class="collapse mt-2 custom-url" id="netpress-arxiv25-summary">
-                <div class="card text-bg-light">
-                  <div class="card-body px-3 py-2 last-p-mb-0">
-                    <p>As LLMs expand into high-stakes domains like network system operations, evaluating their real-world reliability becomes increasingly critical. However, existing benchmarks risk contamination due to static design, show high statistical variance from limited dataset size, and fail to reflect the complexity of production environments.</p>
-                    <p>We introduce <strong>NetPress</strong>, a dynamic benchmark generation framework for network applications. NetPress features a novel abstraction and unified interface that generalizes across applications, effectively addressing the challenges of dynamic benchmarking posed by the diversity of network tasks. At runtime, users can generate unlimited queries on demand. NetPress integrates with network emulators to provide execution-time feedback on correctness, safety, and latency.</p>
-                    <p>We demonstrate NetPress on three representative applications and find that (1) it significantly improve statistical reliability among LLM agents (confidence interval overlap reduced from 85% to 0), (2) agents achieve only 13–38% average performance (as low as 3%) for large-scale, realistic queries, (3) it reveals finer-grained behaviors missed by static, correctness-only benchmarks. NetPress also enables use cases such as SFT and RL fine-tuning on network system tasks.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <img src="images/netpress.png" alt="NetPress Framework Figure" class="netpress-fig">
-          </div>
-        </div>
-      </div>
-      <hr>
       
       <!-- NSDI 2025 Publication -->
       <div class="research-highlight" id="microseg-nsdi25">
