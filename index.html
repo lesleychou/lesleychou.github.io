@@ -143,6 +143,10 @@
         transform: scale(1.5) !important;
       }
       
+      .tidal-fig:hover {
+        transform: scale(1.5) !important;
+      }
+      
       .microseg-fig:hover {
         transform: scale(1.5) !important;
       }
@@ -278,6 +282,10 @@
       </div>
       <div class="news-list custom-url">
         <div class="d-flex">
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Feb 2026</span></div>
+          <div><strong>NetArena</strong> ranked <strong>1st</strong> on the "Coding Agent" benchmark in Berkeley's <a href="https://rdi.berkeley.edu/agentx-agentbeats?utm_source=substack&utm_medium=email">AgentX competition</a> (out of 1,300+ registrations)! [<a href="https://agentbeats.dev/Kolleida/netarena-k8s-policy-benchmark">AgentBeats Leaderboard</a>]</div>
+        </div>
+        <div class="d-flex">
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jan 2026</span></div>
           <div><strong>NetArena</strong> (arXiv version as NetPress) is accepted at <strong>ICLR '26</strong>!</div>
         </div>
@@ -301,18 +309,23 @@
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Sep 2025</span></div>
           <div>The following up work of our HotNets'23 paper "MeshAgent: Enabling Reliable Network Management with Large Language Models" is accepted at <strong>SIGMETRICS '26</strong>.</div>
         </div>
-        <div class="d-flex">
-          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jan 2025</span></div>
-            <div><strong>NetPress</strong> released on arXiv! Check out our <a href="https://www.netpress.ai/" class="text-darkred">leaderboard</a> for dynamically generated LLM benchmarks in network applications.</div>
+        <div class="collapse" id="news-more">
+          <div class="d-flex">
+            <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jan 2025</span></div>
+              <div><strong>NetPress</strong> released on arXiv! Check out our <a href="https://www.netpress.ai/" class="text-darkred">leaderboard</a> for dynamically generated LLM benchmarks in network applications.</div>
+          </div>
+          <div class="d-flex">
+            <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Dec 2024</span></div>
+            <div>My internship project on securing cloud networks with micro-segmentation is accepted at <strong>NSDI '25</strong>. Congrats and thanks to all the mentors there!</div>
+          </div>
+          <div class="d-flex">
+            <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Oct 2023</span></div>
+            <div>Two papers on developing LLM agents to improve network systems are accepted at <strong>HotNets '23</strong>!</div>
+          </div>
         </div>
-        <div class="d-flex">
-          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Dec 2024</span></div>
-          <div>My internship project on securing cloud networks with micro-segmentation is accepted at <strong>NSDI '25</strong>. Congrats and thanks to all the mentors there!</div>
-        </div>
-        <div class="d-flex">
-          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Oct 2023</span></div>
-          <div>Two papers on developing LLM agents to improve network systems are accepted at <strong>HotNets '23</strong>!</div>
-        </div>
+        <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#news-more" aria-expanded="false" aria-controls="news-more">
+          More <i class="fa-solid fa-angle-right bi"></i>
+        </a>
       </div>
     </div>
 
@@ -327,6 +340,7 @@
           <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
             <div class="d-flex flex-wrap gap-1">
               <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>ICLR '26</i></span></div>
+              <div><span class="badge text-bg-gold"><i class="fa-solid fa-trophy me-1"></i>1st Place — AgentX Coding Agent Benchmark</span></div>
               <a href="#netarena-iclr26" class="anchor-link"></a>
             </div>
             <div class="paper-title mt-1">NetArena: Dynamically Generated LLM Benchmarks for Network Applications</div>
@@ -334,10 +348,10 @@
               <span><strong>Yajie Zhou</strong></span>, <span>Jiajun Ruan</span>, <span>Eric S. Wang</span>, <span>Sadjad Fouladi</span>, <span>Francis Y. Yan</span>, <span>Kevin Hsieh</span>, <span>Zaoxing Liu</span>
             </div>
             <div class="paper-links mt-1">
-              <a role="button" class="btn btn-sm btn-outline-dark" href="https://arxiv.org/pdf/2506.03231"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://openreview.net/forum?id=BPVPOtzoOz"><i class="fa-regular fa-file-lines"></i> Paper</a>
               <a role="button" class="btn btn-sm btn-outline-dark" href="documents/netpress-arxiv25.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
               <a role="button" class="btn btn-sm btn-outline-dark" href="https://github.com/Froot-NetSys/NetPress"><i class="fa-solid fa-code"></i> Code</a>
-              <a role="button" class="btn btn-sm btn-outline-dark" href="https://www.netpress.ai/"><i class="fa-solid fa-chart-line"></i> Leaderboard</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://lnkd.in/ekG_NbzU"><i class="fa-solid fa-chart-line"></i> Leaderboard</a>
             </div>
             <div class="mt-3">
               <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#netarena-iclr26-summary" aria-expanded="false" aria-controls="netarena-iclr26-summary">
@@ -375,10 +389,24 @@
             </div>
             <div class="paper-links mt-1">
               <a role="button" class="btn btn-sm btn-outline-dark" href="https://nines-conference.org/papers/p001-Zhou.pdf"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/tidal-nines26.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://vimeo.com/showcase/NINeS?video=1161808604"><i class="fa-regular fa-circle-play"></i> Video</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#tidal-nines26-summary" aria-expanded="false" aria-controls="tidal-nines26-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="tidal-nines26-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>Advanced Persistent Threats (APTs) pose significant challenges to cybersecurity due to their evolving nature and ability to evade detection. This paper introduces <strong>Tidal</strong>, a novel provenance-based intrusion detection system (PIDS) that is specifically designed to address concept drift in APT detection. Tidal designs a modified Transformer architecture tailored for transfer learning, including a Multi-head Transformer (MHT) with shared layers for learning common knowledge and task-specific head layers for learning unique patterns. The system uses a pre-training and fine-tuning workflow to achieve high post-drift adaptation and pre-drift retention accuracy.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
-            <!-- Placeholder for future image -->
+            <img src="images/tidal.png" alt="Tidal Framework Figure" class="tidal-fig">
           </div>
         </div>
       </div>
