@@ -167,6 +167,10 @@
         transform: scale(1.1) !important;
       }
       
+      .aichilles-fig:hover {
+        transform: scale(1.5) !important;
+      }
+      
       .icon-link {
         color: #0066cc;
         text-decoration: none;
@@ -287,6 +291,10 @@
       </div>
       <div class="news-list custom-url">
         <div class="d-flex">
+          <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jun 2026</span></div>
+          <div><span style="color: #0d6efd; font-weight: 600;">[Paper]</span> <strong>AIChilles</strong> is online now. Stay tuned on how we find hidden weaknesses in AI-driven system optimization!</div>
+        </div>
+        <div class="d-flex">
           <div><span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Mar 2026</span></div>
           <div><span style="color: #b8860b; font-weight: 600;">[Award]</span> Honored to be selected for the <a href="https://gradschool.umd.edu/funding/student-fellowships-awards/dissertation-fellowship">Ann G. Wylie Dissertation Fellowship</a> from the Graduate School of UMD.</div>
         </div>
@@ -343,6 +351,43 @@
         <i class="fa-solid fa-file-text fa-fw me-2"></i>Publications
       </div>
       
+      <!-- AIChilles arXiv 2026 Publication -->
+      <div class="research-highlight" id="aichilles-arxiv26">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-info-subtle border border-info-subtle text-info-emphasis"><i>arXiv '26</i></span></div>
+              <a href="#aichilles-arxiv26" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">AIChilles: Automatically Uncovering Hidden Weaknesses in AI-Evolved Systems</div>
+            <div class="paper-authors mt-1">
+              <span><strong>Yajie Zhou</strong></span>, <span>Ao Li</span>, <span>Ashwin Silla</span>, <span>Zaoxing Liu</span>, <span>Vyas Sekar</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://arxiv.org/abs/2606.15834"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/aichilles-arxiv26.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#aichilles-arxiv26-summary" aria-expanded="false" aria-controls="aichilles-arxiv26-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="aichilles-arxiv26-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>AI-driven system optimization frameworks can report large score improvements over human-designed algorithms, but AI-evolved programs may perform worse on unseen workloads and exhibit scalability regressions. We develop <strong>AIChilles</strong>, an agentic system that searches for valid workloads where an AI-evolved program regresses relative to the baseline in correctness, runtime, memory usage, or output quality.</p>
+                    <p>AIChilles combines deterministic workload-parameter extraction, agent-based constraint inference, differential oracles, and code-frequency coverage to discover diverse failures. Across five system applications and 30 AI-evolved programs, AIChilles finds 49 distinct hidden weaknesses. We also show that explicitly including AIChilles in the AI-driven development lifecycle can mitigate several of these weaknesses.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/aichilles.png" alt="AIChilles Framework Figure" class="aichilles-fig">
+          </div>
+        </div>
+      </div>
+      <hr>
+
       <!-- NetArena ICLR 2026 Publication -->
       <div class="research-highlight" id="netarena-iclr26">
         <div class="row g-0">
@@ -714,7 +759,7 @@
             <i class="fa-solid fa-medal text-warning fa-2x me-3"></i>
             <div>
               <strong><a href="https://n2women.comsoc.org/fellowships/">N2Women Young Researcher Fellowship</a></strong>
-              <div class="text-muted">2022</div>
+              <div class="text-muted">2022, 2026</div>
             </div>
           </div>
         </div>
@@ -727,6 +772,15 @@
       </div>
       <div class="card">
         <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+            <div>
+              <strong>University of Michigan, Ann Arbor</strong>
+              <div class="text-muted">Invited by <a href="https://web.eecs.umich.edu/~chenang/">Prof. Ang Chen</a></div>
+            </div>
+            <div class="text-muted">
+              Jun 2026
+            </div>
+          </div>
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <strong>The University of Hong Kong (HKU)</strong>
