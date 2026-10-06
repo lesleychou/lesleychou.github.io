@@ -87,6 +87,100 @@
       .research-highlight {
         margin-bottom: 2rem;
       }
+      /* Tighter rhythm inside the publication list: the <hr> already separates entries */
+      #publications .research-highlight {
+        margin-bottom: 0.5rem;
+      }
+      /* The legacy stylesheet.css draws <hr> as a missing hr.png with no border,
+         so dividers were invisible. Restore a plain rule between entries. */
+      #publications hr {
+        margin: 1rem 0;
+        padding: 0;
+        height: 0;
+        background: none;
+        border: 0;
+        border-top: 1px solid #dee2e6;
+        opacity: 1;
+      }
+      #publications .research-highlight .mt-3 {
+        margin-top: 0.5rem !important;
+      }
+
+      /* Awards: one line each inside the card, year pinned right */
+      .award-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .award-list li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        padding: 0.45rem 0;
+        font-size: 1.12rem;
+      }
+      .award-list li + li {
+        border-top: 1px solid #f1f3f5;
+      }
+      .award-list i {
+        flex: none;
+        color: #f0b400;
+      }
+      .award-list .award-name {
+        flex: 1;
+        font-weight: 600;
+      }
+      .award-list .award-name a {
+        text-decoration: none;
+      }
+      .award-list .award-name .text-muted {
+        font-weight: 400;
+      }
+      .award-list .award-year {
+        flex: none;
+        color: #6c757d;
+        font-size: 1rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Invited talks: one compact line each, date in a fixed left column */
+      .talk-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .talk-list li {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 0.35rem 0;
+      }
+      .talk-list .talk-date {
+        flex: none;
+        width: 5.5rem;
+        font-size: 0.85rem;
+        color: #6c757d;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* Job-market highlight in About */
+      .job-market {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        background: #fff8e1;
+        border: 1px solid #ffe08a;
+        border-left: 4px solid #f0b400;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #5c4400;
+      }
+      .job-market i {
+        color: #d99a00;
+      }
       
       .paper-title {
         font-size: 1.1rem;
@@ -167,6 +261,10 @@
         transform: scale(1.1) !important;
       }
       
+      .tpack-fig:hover {
+        transform: scale(1.5) !important;
+      }
+
       .aichilles-fig:hover {
         transform: scale(1.5) !important;
       }
@@ -221,7 +319,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md sticky-top bg-light-subtle border-bottom py-3">
+    <nav class="navbar navbar-expand-lg sticky-top bg-light-subtle border-bottom py-3">
       <div class="container">
         <a class="navbar-brand" href="/">Lesley (Yajie) Zhou</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,10 +329,10 @@
           <div class="navbar-nav ms-auto">
             <a class="nav-link active" aria-current="page" href="#about">About</a>
             <a class="nav-link" href="#publications">Publications</a>
-            <a class="nav-link" href="#researches">Experience</a>
+            <a class="nav-link" href="#awards">Awards</a>
             <a class="nav-link" href="#talks">Talks</a>
-            <a class="nav-link" href="#service">Service</a>
-            <a class="nav-link" href="#teaching">Teaching</a>
+            <a class="nav-link" href="#researches">Experience</a>
+            <a class="nav-link" href="blog/index.html">Blog</a>
             <a class="nav-link" href="papers/Lesley_Research_CV.pdf">CV</a>
           </div>
         </div>
@@ -277,17 +375,21 @@
       <div class="header-medium">
         <i class="fa-regular fa-id-card fa-fw me-2"></i>About me
       </div>
+      <div class="job-market">
+        <i class="fa-solid fa-bullhorn fa-fw"></i>
+        <span>I will be on the academic job market this year!</span>
+      </div>
       <p>
-        I am a 5th year PhD candidate at University of Maryland, College Park (UMD), advised by <a href="https://zaoxing.github.io/">Prof. Alan Liu</a>. Currently, I am a visiting student at CMU's <a href="https://www.cylab.cmu.edu/">CyLab</a> with <a href="https://users.ece.cmu.edu/~vsekar/">Prof. Vyas Sekar</a>. My research centers on buidling self-driven networking systems, where I aim to build automation that remains robust, reliable, and safe in the face of unpredictable environments.
+        I build reliable AI for critical systems. My research develops methods to make AI-driven system operations more robust, safe, and scalable.
       </p>
       <p>
-        Prior to my PhD studies, I received my M.S. degree from <a href="https://www.kaist.ac.kr/en/">KAIST</a>, and my B.S. degree from <a href="https://en.xidian.edu.cn/">Xidian University</a> in China, majoring in Computer Science.
+        I'm a final-year PhD candidate at the University of Maryland, College Park (UMD), advised by <a href="https://zaoxing.github.io/">Prof. Alan Liu</a>. Currently, I am a visiting student at CMU's <a href="https://www.cylab.cmu.edu/">CyLab</a> with <a href="https://users.ece.cmu.edu/~vsekar/">Prof. Vyas Sekar</a>. I believe we can build autonomous systems that remain reliable as AI takes on increasingly complex operational roles.
       </p>
     </div>        
 
     <div class="container custom-url">
       <div class="header-medium">
-        <i class="fa-solid fa-bullhorn fa-fw me-2"></i>Recent News
+        <i class="fa-regular fa-bell fa-fw me-2"></i>Recent News
       </div>
       <div class="news-list custom-url">
         <div class="d-flex">
@@ -380,6 +482,42 @@
         <i class="fa-solid fa-file-text fa-fw me-2"></i>Publications
       </div>
       
+      <!-- T-PACK NSDI 2027 Publication -->
+      <div class="research-highlight" id="tpack-nsdi27">
+        <div class="row g-0">
+          <div class="col-md-8 pe-0 pe-md-4 pb-3 pb-md-0">
+            <div class="d-flex flex-wrap gap-1">
+              <div><span class="badge bg-success-subtle border border-success-subtle text-success-emphasis"><i>NSDI '27</i></span></div>
+              <a href="#tpack-nsdi27" class="anchor-link"></a>
+            </div>
+            <div class="paper-title mt-1">T-PACK: Structure-Aware Generative Compression for Efficient Distributed Tracing</div>
+            <div class="paper-authors mt-1">
+              <span>Yen-Ru Chin</span>, <span>Milind Srivastava</span>, <span><strong>Yajie Zhou</strong></span>, <span>Giulia Fanti</span>, <span>Vyas Sekar</span>
+            </div>
+            <div class="paper-links mt-1">
+              <a role="button" class="btn btn-sm btn-outline-dark" href="https://www.usenix.org/conference/nsdi27/presentation/chin" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> Paper</a>
+              <a role="button" class="btn btn-sm btn-outline-dark" href="documents/tpack-nsdi27.bib"><i class="fa-solid fa-quote-right"></i> Cite</a>
+            </div>
+            <div class="mt-3">
+              <a class="icon-link icon-link-hover fw-normal text-royalblue" data-bs-toggle="collapse" href="#tpack-nsdi27-summary" aria-expanded="false" aria-controls="tpack-nsdi27-summary">
+                Read summary <i class="fa-solid fa-angle-right bi"></i>
+              </a>
+              <div class="collapse mt-2 custom-url" id="tpack-nsdi27-summary">
+                <div class="card text-bg-light">
+                  <div class="card-body px-3 py-2 last-p-mb-0">
+                    <p>While distributed tracing is essential to monitoring and debugging cloud-scale applications, transmitting large raw traces can be prohibitively costly. Strawman solutions such as head or tail sampling force operators to choose between low cost and high fidelity. In <strong>T-PACK</strong>, we explored a new custom generative compression solution that offers a practical way out of this classic cost vs. fidelity conundrum. We showed that <strong>T-PACK</strong> is fast, scalable, and outperforms existing baselines for trace transmission, and can seamlessly support existing downstream analytics tools.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-2 text-md-end research-highlight-thumbnail">
+            <img src="images/tpack.png" alt="T-PACK architecture: a T-PACK Compressor at the edge sends model parameters to a T-PACK Reconstructor at the backend, which feeds the tracing backend and downstream dashboards, RCA, and anomaly detection." class="tpack-fig">
+          </div>
+        </div>
+      </div>
+      <hr>
+
       <!-- AIChilles arXiv 2026 Publication -->
       <div class="research-highlight" id="aichilles-arxiv26">
         <div class="row g-0">
@@ -718,6 +856,63 @@
       </div>
     </div>
 
+    <div class="container custom-url" id="awards" style="scroll-margin-top: 80px;">
+      <div class="header-medium">
+        <i class="fa-solid fa-award fa-fw me-2"></i>Awards
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <ul class="award-list">
+            <li>
+              <i class="fa-solid fa-star fa-fw"></i>
+              <span class="award-name"><a href="https://gradschool.umd.edu/funding/student-fellowships-awards/dissertation-fellowship">Ann G. Wylie Dissertation Fellowship</a></span>
+              <span class="award-year">2026</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-trophy fa-fw"></i>
+              <span class="award-name">Winner of <a href="https://rdi.berkeley.edu/agentx-agentbeats">AgentX&ndash;AgentBeats Competition</a> (Coding Agent Track)</span>
+              <span class="award-year">2026</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-star fa-fw"></i>
+              <span class="award-name"><a href="https://www.kaust.edu.sa/events/rsais26/">KAUST Rising Stars in AI Symposium</a> <span class="text-muted">(Top 6%)</span></span>
+              <span class="award-year">2026</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-medal fa-fw"></i>
+              <span class="award-name"><a href="https://n2women.comsoc.org/fellowships/">N2Women Young Researcher Fellowship</a></span>
+              <span class="award-year">2022, 2026</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container custom-url" id="talks" style="scroll-margin-top: 80px;">
+      <div class="header-medium">
+        <i class="fa-solid fa-microphone fa-fw me-2"></i>Invited Talks
+      </div>
+      <!-- One line per talk, newest first. -->
+      <ul class="talk-list">
+        <li>
+          <span class="talk-date">Oct 2026</span>
+          <span><strong>Princeton University</strong> <span class="text-muted">&middot; invited by <a href="https://www.cs.princeton.edu/people/profile/ma7837">Prof. Maria Apostolaki</a></span></span>
+        </li>
+        <li>
+          <span class="talk-date">Oct 2026</span>
+          <span><strong>University of Illinois Urbana-Champaign</strong> <span class="text-muted">&middot; invited by <a href="https://ece.illinois.edu/directory/profile/fyy">Prof. Francis Y. Yan</a></span></span>
+        </li>
+        <li>
+          <span class="talk-date">Jun 2026</span>
+          <span><strong>University of Michigan, Ann Arbor</strong> <span class="text-muted">&middot; invited by <a href="https://web.eecs.umich.edu/~chenang/">Prof. Ang Chen</a></span></span>
+        </li>
+        <li>
+          <span class="talk-date">Feb 2026</span>
+          <span><strong>The University of Hong Kong (HKU)</strong> <span class="text-muted">&middot; invited by <a href="https://www.dase.hku.hk/people/s-n-liu">Prof. Shinan Liu</a></span></span>
+        </li>
+      </ul>
+    </div>
+
     <div class="container custom-url" id="researches" style="scroll-margin-top: 80px;">
       <div class="header-medium">
         <i class="fa-solid fa-briefcase fa-fw me-2"></i>Work Experience
@@ -741,22 +936,10 @@
             </div>
           </div>
           
-          <!-- 2024 Internship -->
-          <div class="mb-3">
-            <strong><a href="https://www.microsoft.com/en-us/research/group/networking-research/people/">Network Research Group</a></strong>
-            <span class="date-at-right">May 2024 - Aug. 2024</span>
-            <div class="text-muted mt-1">
-              <strong>Research Intern</strong><br>
-              Mentors: <a href="https://www.microsoft.com/en-us/research/people/kevhsieh/">Kevin Hsieh</a>, 
-              <a href="https://www.microsoft.com/en-us/research/people/samani/">Sathiya Kumaran Mani</a>, 
-              <a href="https://scholar.google.com/citations?user=2QkR2WoAAAAJ&hl=en">Srikanth Kandula</a>
-            </div>
-          </div>
-          
-          <!-- 2023 Internship -->
+          <!-- 2023 + 2024 Internships (same mentors) -->
           <div class="mb-2">
             <strong><a href="https://www.microsoft.com/en-us/research/group/networking-research/people/">Network Research Group</a></strong>
-            <span class="date-at-right">May 2023 - Aug. 2023</span>
+            <span class="date-at-right">Summers 2023 &amp; 2024</span>
             <div class="text-muted mt-1">
               <strong>Research Intern</strong><br>
               Mentors: <a href="https://www.microsoft.com/en-us/research/people/kevhsieh/">Kevin Hsieh</a>, 
@@ -768,63 +951,7 @@
       </div>
     </div>
 
-    <div class="container custom-url">
-      <div class="header-medium">
-        <i class="fa-solid fa-award fa-fw me-2"></i>Awards
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-3">
-            <i class="fa-solid fa-star text-warning fa-2x me-3"></i>
-            <div>
-              <strong><a href="https://gradschool.umd.edu/funding/student-fellowships-awards/dissertation-fellowship">Ann G. Wylie Dissertation Fellowship</a></strong>
-              <div class="text-muted">2026</div>
-            </div>
-          </div>
-          <div class="d-flex align-items-center mb-3">
-            <i class="fa-solid fa-star text-warning fa-2x me-3"></i>
-            <div>
-              <strong><a href="https://www.kaust.edu.sa/events/rsais26/">KAUST Rising Stars in AI Symposium</a></strong>
-              <div class="text-muted">2026 (Top 6%)</div>
-            </div>
-          </div>
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-medal text-warning fa-2x me-3"></i>
-            <div>
-              <strong><a href="https://n2women.comsoc.org/fellowships/">N2Women Young Researcher Fellowship</a></strong>
-              <div class="text-muted">2022, 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container custom-url" id="talks" style="scroll-margin-top: 80px;">
-      <div class="header-medium">
-        <i class="fa-solid fa-microphone fa-fw me-2"></i>Invited Talks
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
-            <i class="fa-solid fa-building-columns text-secondary fa-lg fa-fw me-3"></i>
-            <div class="flex-grow-1">
-              <strong>University of Michigan, Ann Arbor</strong>
-              <div class="text-muted">Invited by <a href="https://web.eecs.umich.edu/~chenang/">Prof. Ang Chen</a></div>
-            </div>
-            <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Jun 2026</span>
-          </div>
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-building-columns text-secondary fa-lg fa-fw me-3"></i>
-            <div class="flex-grow-1">
-              <strong>The University of Hong Kong (HKU)</strong>
-              <div class="text-muted">Invited by <a href="https://www.dase.hku.hk/people/s-n-liu">Prof. Shinan Liu</a></div>
-            </div>
-            <span class="badge bg-secondary-subtle border border-secondary-subtle text-secondary-emphasis">Feb 2026</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <!-- Service and Teaching hidden for now; delete these comment markers to restore.
     <div class="container custom-url" id="service" style="scroll-margin-top: 80px;">
       <div class="header-medium">
         <i class="fa-solid fa-hands-helping fa-fw me-2"></i>Service
@@ -873,6 +1000,7 @@
         </div>
       </div>
     </div>
+    -->
 
     <div class="container custom-url">
       <div class="header-medium">

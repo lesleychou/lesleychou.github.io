@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- ============ EDIT THESE FOUR LINES FOR EVERY NEW POST ============ -->
+    <title>Post title &mdash; Not yet! &middot; Lesley (Yajie) Zhou</title>
+    <meta name="description" content="Two sentences: what you looked at, and what turned out to be true. This is what Google and the link preview show.">
+    <meta property="og:title" content="Post title &mdash; Not yet!">
+    <meta property="og:image" content="https://lesleychou.github.io/images/aichilles.png">
+    <!-- ================================================================== -->
+
+    <link rel="icon" href="../images/Lh.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154639354-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-154639354-1');
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- ===================== NAVBAR — never edit ===================== -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-light-subtle border-bottom py-3">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Lesley (Yajie) Zhou</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar-menu" class="collapse navbar-collapse">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="../index.html#about">About</a>
+            <a class="nav-link" href="../index.html#publications">Publications</a>
+            <a class="nav-link" href="../index.html#awards">Awards</a>
+            <a class="nav-link" href="../index.html#talks">Talks</a>
+            <a class="nav-link" href="../index.html#researches">Experience</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Blog</a>
+            <a class="nav-link" href="../papers/Lesley_Research_CV.pdf">CV</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== HERO — edit every field ===================== -->
+    <header class="post-hero">
+      <div class="container">
+        <div class="post-kicker">
+          <a href="index.html"><i class="fa-solid fa-arrow-left fa-fw"></i> Blog</a> &nbsp;/&nbsp;
+          <span class="series">AI Reliability for Systems</span>
+        </div>
+
+        <!-- A question, then the answer. "Are X ready for primetime — Not yet!" -->
+        <h1 class="post-title">Is X ready for primetime &mdash; <span class="flag">Not yet!</span></h1>
+
+        <!-- Subtitle: the one-line hook, in italics under the title. -->
+        <p class="post-subtitle">Exposing the hidden weakness of X</p>
+
+        <!-- Authors first, then date and read time. Link each name to a homepage. -->
+        <div class="post-byline">
+          <span class="post-authors">
+            <a href="https://lesleychou.github.io/">Lesley Zhou</a>,
+            <a href="https://users.ece.cmu.edu/~vsekar/">Vyas Sekar</a>
+          </span>
+          <span class="sep">&middot;</span>
+          <span>Sep 29, 2026</span>
+          <span class="sep">&middot;</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <!-- ===== TL;DR — 3-4 bullets: the trend, the catch, what we built, the ask ===== -->
+      <div class="tldr">
+        <b>TL;DR</b>
+        <ul>
+          <li>The trend: what people are doing and the gains they report.</li>
+          <li>The catch: why those gains can give us false confidence.</li>
+          <li>What we built to find out.</li>
+          <li>What the reader should do differently.</li>
+        </ul>
+      </div>
+
+      <!-- ===== FIG. 1 — the overview figure; the caption cites the paper ===== -->
+      <figure class="post-fig is-narrow">
+        <img src="images/aichilles-overview.svg" alt="Describe what the figure shows, for screen readers and for when the image fails to load.">
+        <figcaption>
+          <b>Fig. 1.</b> One or two sentences that make the figure readable on its own &mdash;
+          name the inputs (<em>P</em>, <em>W</em>), what the system does, and what it
+          reports.<sup class="cite"><a href="#ref-1">[1]</a></sup>
+        </figcaption>
+      </figure>
+
+      <!-- ===== BODY ===== -->
+      <article class="post-body">
+
+        <!-- Intro: no heading. Paragraph 1 is the promise; paragraph 2 surveys the
+             field (name + link + citation), then turns: "the promise was not as
+             good as it seemed." -->
+        <p>
+          Open with the promise. What problem does this new approach solve, and why is
+          everyone excited about it? Keep it to three or four sentences.
+        </p>
+        <p>
+          Recent work (e.g., <a href="#!">System A</a><sup class="cite"><a href="#ref-2">[2]</a></sup>,
+          <a href="#!">System B</a> (Org)<sup class="cite"><a href="#ref-3">[3]</a></sup>)
+          claims impressive improvements. We got excited and wanted to see: do these
+          improvements hold up? However, we soon found that the promise was not as good as
+          it seemed.
+        </p>
+
+        <!-- Section headings are claims or questions, not topics. -->
+        <h2 id="finding">Our tool can automatically expose X</h2>
+        <p>
+          What you noticed first, in plain terms: it crashed, slowed down as the workload
+          scaled, used much more memory, or returned a worse answer.
+        </p>
+        <p>
+          Motivated by this, we designed <strong>Tool</strong>
+          (<a href="#!">paper</a>, <a href="#!">code</a>)<sup class="cite"><a href="#ref-1">[1]</a></sup>,
+          which takes as input &hellip; and searches for &hellip;. Inline code looks like
+          <code>run(P, W)</code>.
+        </p>
+
+        <figure class="post-fig is-narrow">
+          <img src="images/aichilles-overview.svg" alt="Describe the figure.">
+          <figcaption>
+            <b>Fig. 2.</b> Lead with the number that matters: at 32 GPUs, <em>P&prime;</em>
+            takes 89&nbsp;s while <em>P</em> stays around 6&nbsp;ms.
+          </figcaption>
+        </figure>
+
+        <p>
+          Who you reported this to, and what they said. Link their response if it is public.
+        </p>
+
+        <h2 id="does-y-fix-it">Does Y fix this?</h2>
+        <p>
+          The obvious counter-argument, stated fairly: what the newer approach does and why
+          its authors believe it avoids the problem.
+        </p>
+        <p>
+          What you tested and what broke. Quote the specification it violated, if there is
+          one. <em>Unfortunately, we still found &hellip;</em>
+        </p>
+
+        <h2 id="lesson">The new &ldquo;bitter&rdquo; lesson for X</h2>
+        <p>
+          When a system tells us it has improved, we should not only ask, &ldquo;How much
+          better is the score?&rdquo; We should also ask, <strong>&ldquo;the one question
+          you want readers to leave with?&rdquo;</strong>
+        </p>
+
+        <!-- ===== CONTACT CALLOUT — the call to action. The email is assembled
+             on click (see the script at the bottom), so it is never in the HTML. ===== -->
+        <div class="callout cta">
+          <p>
+            If you want to run Tool on your own system, please let us know!
+            <button type="button" class="copy-email" data-u="leszhou" data-d="umd.edu" aria-label="Copy email address" title="Copy email address"><i class="fa-regular fa-envelope"></i><span class="copy-email-tip" role="status"></span></button>
+          </p>
+          <p>Or feel free to open an issue on the <a href="#!">code repo</a> and we will test it!</p>
+        </div>
+
+        <!-- ===== REFERENCES — Title. Venue, Year. Authors. [links] ===== -->
+        <h2 id="references">References</h2>
+        <ol class="ref-list">
+          <li id="ref-1">
+            <em>Title of our paper.</em> arXiv:XXXX.XXXXX, 2026. Yajie Zhou, Coauthor, Vyas Sekar.
+            <a href="#!">[arXiv]</a> <a href="#!">[code]</a>
+          </li>
+          <li id="ref-2">
+            <em>Title of related work.</em> Venue, Year. First Author, Second Author, et al.
+            <a href="#!">[pdf]</a>
+          </li>
+          <li id="ref-3">
+            <em>Title of an industry blog post.</em> Org Engineering Blog. <a href="#!">[blog]</a>
+          </li>
+        </ol>
+
+      </article>
+
+      <!-- ===== PREV / NEXT — optional; delete either <div> if there is none ===== -->
+      <nav class="post-nav">
+        <div>
+          <span>Previous</span>
+          <a href="#!">Title of the previous post</a>
+        </div>
+        <div>
+          <span>Next</span>
+          <a href="#!">Title of the next post</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 mt-5 border-top">
+        <div>
+          <span class="mb-3 text-body-secondary">&copy; 2025 Lesley (Yajie) Zhou. All rights reserved.</span>
+          <br>
+          <span class="text-body-secondary">This page was created using <a href="http://pages.github.com">GitHub Pages</a>.</span>
+        </div>
+        <div>
+          <i class="fa-solid fa-envelope fa-fw"></i>
+          leszhou@umd.edu
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Copy-email button (.copy-email with data-u / data-d): the address is only
+      // assembled on click, so it never appears whole in the callout.
+      (function () {
+        document.addEventListener('click', function (e) {
+          var b = e.target.closest('.copy-email');
+          if (!b) { return; }
+          var addr = b.dataset.u + '@' + b.dataset.d;
+          var tip = b.querySelector('.copy-email-tip');
+          function done(msg) {
+            if (!tip) { return; }
+            tip.textContent = msg;
+            tip.classList.add('show');
+            clearTimeout(b._t);
+            b._t = setTimeout(function () { tip.classList.remove('show'); }, 1600);
+          }
+          function fallback() {
+            var t = document.createElement('textarea');
+            t.value = addr;
+            t.setAttribute('readonly', '');
+            t.style.position = 'fixed';
+            t.style.opacity = '0';
+            document.body.appendChild(t);
+            t.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (x) {}
+            t.remove();
+            done(ok ? 'Email copied' : 'Copy failed');
+          }
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(addr).then(function () { done('Email copied'); }, fallback);
+          } else {
+            fallback();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

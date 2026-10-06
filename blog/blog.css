@@ -1,0 +1,1068 @@
+/* ==========================================================================
+   blog.css — styles for lesleychou.github.io/blog/
+   Direction: "Figure Cards" — every post leads with its teaser figure,
+   mirroring the research-highlight cards on the homepage.
+
+   Loaded AFTER bootstrap@5.3.3. Does NOT load stylesheets/stylesheet.css
+   (that is the legacy Meyer reset from the old site; it overrides h1-h3,
+   kills list markers, and forces Raleway + text-shadow).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Base — matches index.html
+   -------------------------------------------------------------------------- */
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #212529;
+}
+
+/* Same container width as the homepage, so nav + content line up exactly */
+.container {
+  max-width: 900px !important;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px !important;
+  }
+}
+
+/* Homepage section header ("<icon> Blog") */
+.header-medium {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.blog-intro {
+  color: #6c757d;
+  font-size: 0.95rem;
+  max-width: 62ch;
+  margin-bottom: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   1b. Series banner
+   The one loud element on the site. Crimson is reserved for this series and
+   nothing else, so it reads as a signal rather than decoration.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --series-red: #a4161a;
+}
+
+/* A short rule above the eyebrow rather than a tall bar down the side: the
+   crimson still reads, without boxing in four stacked lines of text. */
+.series-banner {
+  margin: 3rem 0 3.25rem;
+}
+
+.series-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--series-red);
+  margin-bottom: 1rem;
+}
+.series-eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 3px;
+  background: var(--series-red);
+  flex: none;
+}
+
+.series-title {
+  font-size: clamp(2.1rem, 6.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  /* Relaxed from -0.038em and given real word gaps — at this weight and size a
+     tight track made the words run together. No max-width: the extra spacing
+     would push it to a second line. */
+  letter-spacing: -0.015em;
+  word-spacing: 0.11em;
+  color: #111418;
+  margin: 0 0 1.1rem;
+  text-wrap: balance;
+}
+
+.series-standfirst {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #55606c;
+  max-width: 50ch;
+  margin: 0;
+}
+
+/* Department line on a card — the series name travels with every entry, so a
+   card still carries it when seen on its own. */
+.post-card .series-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--series-red);
+  font-weight: 500;
+  line-height: 1.4;
+}
+.post-card .series-line .num {
+  color: #adb5bd;
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   2. Index — tag/kind filter chips
+   -------------------------------------------------------------------------- */
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Names the axis the chips filter on — "ADRS / Nanochat / SkySynth" is not
+   self-explanatory without it. */
+.filter-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  margin-right: 0.35rem;
+}
+
+.chip {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #495057;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 0.25rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.chip:hover {
+  border-color: #adb5bd;
+  color: #212529;
+}
+.chip[aria-pressed="true"] {
+  background: #0d6efd;
+  border-color: #0d6efd;
+  color: #fff;
+}
+.chip:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+/* Static (non-clickable) chips used as tag labels on a post page */
+.chip-static {
+  cursor: default;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.chip-static:hover {
+  border-color: #dee2e6;
+  color: #495057;
+}
+
+/* --------------------------------------------------------------------------
+   3. Index — card grid
+   -------------------------------------------------------------------------- */
+
+/* Tracks are capped at 430px rather than 1fr, so a lone card keeps its shape
+   instead of stretching the full container and blowing up its 16:9 thumbnail.
+   Two columns on desktop, one below ~540px. */
+.post-grid {
+  display: grid;
+  /* min(260px, 100%) guards the 260px floor at very narrow widths (heavy page
+     zoom, <300px viewports) so a track can never be wider than its container. */
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 430px));
+  justify-content: start;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.post-card:hover,
+.post-card:focus-visible {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+  border-color: #dee2e6;
+  color: inherit;
+}
+.post-card:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+.post-card[hidden] {
+  display: none !important;
+}
+
+.post-card .thumb {
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  overflow: hidden;
+}
+.post-card .thumb img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* No teaser figure yet: the panel carries the part number instead. For a
+   numbered series this is real information, and it reads as deliberate rather
+   than as a missing image. Swap in a real <img> once the post has a figure. */
+.post-card .thumb.is-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 21 / 9;
+  background: #fbfbfc;
+}
+.post-card .thumb.is-empty::after {
+  content: attr(data-label);
+  font-size: clamp(2.4rem, 7vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--series-red);
+  opacity: 0.16;
+}
+.post-card:hover .thumb.is-empty::after {
+  opacity: 0.28;
+}
+
+.post-card .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.post-card .kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: #868e96;
+  font-variant-numeric: tabular-nums;
+}
+.post-card .kicker .kind {
+  color: #0d6efd;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.post-card .card-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #212529;
+  margin: 0;
+  transition: color 0.15s;
+}
+.post-card:hover .card-title {
+  color: #0d6efd;
+}
+
+.post-card .card-dek {
+  font-size: 0.82rem;
+  color: #6c757d;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.empty-state {
+  color: #6c757d;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. Post page — hero
+   -------------------------------------------------------------------------- */
+
+.post-hero {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 1.75rem;
+}
+.post-hero .container {
+  padding-block: 1.9rem 1.7rem;
+}
+
+.post-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+  margin-bottom: 0.7rem;
+}
+.post-kicker a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.post-kicker a:hover {
+  text-decoration: underline;
+}
+
+.post-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: #212529;
+  margin: 0 0 0.7rem;
+  text-wrap: balance;
+}
+
+/* Highlighted span inside a title. Amber deliberately sits outside the site's
+   blue and the series crimson, so it reads as emphasis rather than as either
+   the link colour or the series accent. box-decoration-break keeps the
+   highlight intact when the title wraps across lines. */
+.flag {
+  background: #ffe9a8;
+  padding: 0.02em 0.2em;
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.post-dek {
+  font-size: 1.03rem;
+  color: #495057;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+  max-width: 60ch;
+}
+
+.post-byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #868e96;
+}
+.post-byline .sep {
+  color: #ced4da;
+}
+
+/* Italic one-line hook under the title (the reference post's "subtitle"). */
+.post-subtitle {
+  font-size: 1.12rem;
+  font-style: italic;
+  color: #55606c;
+  line-height: 1.5;
+  margin: -0.2rem 0 0.9rem;
+  max-width: 60ch;
+}
+
+/* Author names lead the byline; darker than the date so they read first. */
+.post-authors {
+  color: #495057;
+  font-weight: 500;
+}
+.post-authors a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #ced4da;
+  text-underline-offset: 3px;
+}
+.post-authors a:hover {
+  color: #0d6efd;
+  text-decoration-color: currentColor;
+}
+
+/* "Also posted on ..." line under the byline, for cross-posted entries */
+.post-crosspost {
+  margin: 0.8rem 0 0;
+  font-size: 0.95rem;
+  color: #868e96;
+}
+.post-crosspost i {
+  font-size: 0.85rem;
+  color: #adb5bd;
+}
+.post-crosspost a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.post-crosspost a:hover {
+  text-decoration: underline;
+}
+
+/* Department line in the post hero — same crimson treatment as the cards, so a
+   reader landing straight on a post sees the series before the title. */
+.post-kicker .series {
+  color: var(--series-red);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.post-kicker .series-num {
+  color: #adb5bd;
+}
+
+/* Visible draft banner. Delete the whole block from a post once it is written. */
+.draft-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  border: 1px dashed #ced4da;
+  border-radius: 8px;
+  background: #fcfcfd;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.75rem;
+  font-size: 0.88rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+.draft-note i {
+  color: #adb5bd;
+  margin-top: 0.2rem;
+}
+.draft-note b {
+  color: #495057;
+  font-weight: 600;
+}
+
+/* Outline scaffold — the section list a draft starts from */
+.outline {
+  margin: 0 0 1.75rem;
+}
+.outline > b {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.outline ol {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.92rem;
+  color: #6c757d;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   4b. Post page — contents
+   Populated from the page's own h2 ids, so it can never go stale. Stays hidden
+   until it has links (no JS, or a post with fewer than two sections).
+   -------------------------------------------------------------------------- */
+
+.post-toc:empty {
+  display: none;
+}
+.post-toc {
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1.75rem;
+}
+.post-toc > b {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+.post-toc ol {
+  list-style: none;
+  counter-reset: toc;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 2.5rem;
+}
+.post-toc li {
+  counter-increment: toc;
+  break-inside: avoid;
+  margin-bottom: 0.35rem;
+}
+.post-toc li::before {
+  content: counter(toc) ".";
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  color: #ced4da;
+  margin-right: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.post-toc a {
+  color: #0d6efd;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.post-toc a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 575.98px) {
+  .post-toc ol {
+    columns: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Post page — TL;DR box
+   -------------------------------------------------------------------------- */
+
+.tldr {
+  border: 1px solid #cfe2ff;
+  background: #f2f7ff;
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  margin: 0 0 1.75rem;
+}
+.tldr > b {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0d6efd;
+  margin-bottom: 0.55rem;
+}
+.tldr ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 1rem;
+  color: #343a40;
+  line-height: 1.65;
+}
+.tldr li + li {
+  margin-top: 0.3rem;
+}
+
+/* Prose form of the TL;DR, for when the summary is paragraphs rather than
+   bullets. The label leads the first sentence inline instead of sitting above. */
+.tldr p {
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  color: #343a40;
+  line-height: 1.68;
+}
+.tldr p:last-child {
+  margin-bottom: 0;
+}
+.tldr p b {
+  color: #0d6efd;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   6. Post page — body typography
+   -------------------------------------------------------------------------- */
+
+.post-body {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: #343a40;
+}
+.post-body h2 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: -0.01em;
+  margin: 2rem 0 0.65rem;
+  scroll-margin-top: 5rem; /* clears the sticky navbar on #anchor jumps */
+}
+/* Was 1.02rem against 1rem body text — near-invisible as a heading. Given real
+   size and breathing room now that h3 carries named subsections. */
+.post-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #212529;
+  letter-spacing: -0.005em;
+  margin: 1.9rem 0 0.6rem;
+  scroll-margin-top: 5rem;
+}
+.post-body p {
+  margin: 0 0 1rem;
+}
+.post-body a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.post-body a:hover {
+  text-decoration: underline;
+}
+.post-body ul,
+.post-body ol {
+  margin: 0 0 1rem;
+  padding-left: 1.3rem;
+}
+.post-body li {
+  margin-bottom: 0.3rem;
+}
+
+/* Figures — the hero figure sits outside .post-body so it can run full width */
+.post-fig {
+  margin: 0 0 1.75rem;
+}
+
+.post-body .post-fig {
+  margin: 1.75rem 0;
+}
+
+/* Figures that read better small than sprawling. Applied to the cover figure
+   and the use-case diagram so they share one width. Must come AFTER the
+   `.post-body .post-fig` margin rule above — same specificity, so source order
+   decides whether margin-inline:auto survives. */
+.post-fig.is-narrow,
+.post-body .post-fig.is-narrow {
+  max-width: 620px;
+  margin-inline: auto;
+}
+/* A live chart in place of an <img>: same card frame as an image figure */
+.post-chart {
+  border: 1px solid #e9ecef;
+  max-width: 100%;
+  border-radius: 8px;
+  padding: 1rem 1rem 0.6rem;
+  background: #fff;
+}
+/* vegaEmbed adds .vega-embed (inline-block) to the container itself, which
+   collapses a width:"container" chart to nothing. Keep it a full-width block,
+   capped so a single small chart doesn't sprawl. */
+.post-chart.vega-embed {
+  display: block;
+  width: min(100%, 520px);
+  margin-inline: auto;
+}
+/* Wide figures (e.g. 2.6:1 diagrams) shown whole on a card instead of cropped */
+.post-card .thumb.is-contain img {
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem;
+}
+.post-fig img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+}
+/* Transparent figures (no background of their own) drop the card frame */
+.post-fig.is-bare img {
+  border: 0;
+  border-radius: 0;
+}
+/* Centred and darker than the old 0.82rem/#6c757d — captions carry real
+   information here, so they should not read as fine print. */
+.post-fig figcaption {
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  text-align: center;
+  text-wrap: pretty;
+}
+.post-fig figcaption b {
+  color: #111418;
+  font-weight: 700;
+}
+
+/* Quieter than .callout — an indented aside for context that sits beside the
+   argument rather than in it. */
+.note {
+  border-left: 3px solid #dee2e6;
+  margin: 1.5rem 0 1.5rem 1.5rem;
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  font-size: 0.92rem;
+  color: #6c757d;
+  line-height: 1.7;
+}
+.note b {
+  color: #495057;
+  font-weight: 600;
+}
+
+/* Pull-out callout */
+.callout {
+  background: #f8f9fa;
+  border-left: 3px solid #0d6efd;
+  border-radius: 0 6px 6px 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  color: #495057;
+}
+
+/* Call-to-action variant: a full box rather than a left rule, so the
+   "get in touch" ending reads as distinct from a mid-post pull-out. */
+.callout.cta {
+  background: #f2f7ff;
+  border: 1px solid #cfe2ff;
+  border-left: 4px solid #0d6efd;
+  border-radius: 6px;
+}
+.callout.cta p {
+  margin: 0;
+}
+.callout.cta p + p {
+  margin-top: 0.4rem;
+}
+
+/* Icon button that copies an address without printing it (script in post) */
+.copy-email {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -1px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin: 0 2px;
+  border: 0;
+  background: transparent;
+  color: #0d6efd;
+  cursor: pointer;
+}
+.copy-email:hover,
+.copy-email:focus-visible {
+  color: #0a58ca;
+}
+.copy-email-tip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #0d6efd;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+.copy-email-tip.show {
+  opacity: 1;
+}
+
+/* Code */
+.post-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  background: #f1f3f5;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  color: #343a40;
+}
+/* A <code> inside a link must take the link colour, or the link reads as plain
+   code and nobody clicks it. */
+.post-body a code {
+  color: inherit;
+}
+
+.post-body pre {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+}
+.post-body pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+/* Wide tables scroll on their own instead of pushing the page sideways */
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+.post-body th,
+.post-body td {
+  text-align: left;
+  padding: 0.45rem 0.8rem 0.45rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+.post-body th {
+  font-weight: 600;
+  color: #212529;
+  border-bottom-color: #ced4da;
+  white-space: nowrap;
+}
+
+/* Display equation */
+.equation {
+  text-align: center;
+  font-style: italic;
+  color: #212529;
+  padding: 0.9rem 0;
+  margin: 1.25rem 0;
+  border-block: 1px solid #f1f3f5;
+  overflow-x: auto;
+}
+
+/* Reference list rendered as a section inside .post-body */
+.ref-list {
+  list-style: none;
+  counter-reset: ref;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+}
+.ref-list li {
+  counter-increment: ref;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.65;
+}
+.ref-list li::before {
+  content: "[" counter(ref) "]";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  color: #adb5bd;
+  font-variant-numeric: tabular-nums;
+}
+.ref-list li {
+  scroll-margin-top: 5rem;
+}
+/* Clicking a [n] citation highlights the reference it lands on */
+.ref-list li:target {
+  color: #0d6efd;
+}
+.ref-list em {
+  color: #212529;
+}
+.ref-list b {
+  font-weight: 600;
+  color: #212529;
+}
+
+/* Citations + references */
+sup.cite {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7em;
+  line-height: 0;
+  margin-left: 0.1em;
+}
+sup.cite a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+sup.cite a:hover {
+  text-decoration: underline;
+}
+
+.post-refs {
+  margin-top: 2.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.84rem;
+  color: #6c757d;
+}
+.post-refs > b {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.post-refs ol {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+.post-refs li {
+  margin-bottom: 0.45rem;
+  line-height: 1.55;
+}
+.post-refs a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.post-refs a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   6b. Post page — FAQ
+   -------------------------------------------------------------------------- */
+
+.faq ol {
+  list-style: none;
+  counter-reset: faq;
+  margin: 0;
+  padding: 0;
+}
+.faq li {
+  counter-increment: faq;
+  padding-left: 2rem;
+  position: relative;
+}
+.faq li + li {
+  margin-top: 1.4rem;
+}
+.faq li::before {
+  content: counter(faq) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  color: #adb5bd;
+  font-variant-numeric: tabular-nums;
+}
+.faq-q {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212529;
+  line-height: 1.5;
+  margin: 0 0 0.35rem;
+}
+.faq-a {
+  font-size: 0.95rem;
+  color: #495057;
+  line-height: 1.7;
+  margin: 0;
+}
+.faq-a a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+.faq-a a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   7. Post page — prev/next
+   -------------------------------------------------------------------------- */
+
+.post-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  margin-top: 2.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.85rem;
+}
+.post-nav > div {
+  max-width: 32ch;
+}
+.post-nav span {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  margin-bottom: 0.2rem;
+}
+.post-nav a {
+  color: #0d6efd;
+  text-decoration: none;
+  line-height: 1.45;
+}
+.post-nav a:hover {
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   8. Small screens + motion + print
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+  .post-title {
+    font-size: 1.5rem;
+  }
+  .post-hero .container {
+    padding-block: 1.4rem 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-card,
+  .chip {
+    transition: none;
+  }
+  .post-card:hover {
+    transform: none;
+  }
+}
+
+@media print {
+  .navbar,
+  .post-nav,
+  .filter-row {
+    display: none !important;
+  }
+  .post-hero {
+    background: none;
+    border: 0;
+  }
+  .post-body {
+    max-width: none;
+  }
+  a {
+    text-decoration: none;
+    color: #000 !important;
+  }
+}

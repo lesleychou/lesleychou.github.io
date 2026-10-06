@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Are AI-evolved systems ready for primetime &mdash; Not yet! &middot; Lesley (Yajie) Zhou</title>
+    <meta name="description" content="AI-evolved programs that score better on their benchmark can crash, slow down, or return worse results on new workloads. We built AIChilles to expose these weaknesses automatically, and found them even in a spec-driven multi-agent workflow.">
+    <meta property="og:title" content="Are AI-evolved systems ready for primetime — Not yet!">
+    <meta property="og:image" content="https://lesleychou.github.io/blog/images/aichilles-overview.svg">
+
+    <link rel="icon" href="../images/Lh.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154639354-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-154639354-1');
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top bg-light-subtle border-bottom py-3">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">Lesley (Yajie) Zhou</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar-menu" class="collapse navbar-collapse">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="../index.html#about">About</a>
+            <a class="nav-link" href="../index.html#publications">Publications</a>
+            <a class="nav-link" href="../index.html#awards">Awards</a>
+            <a class="nav-link" href="../index.html#talks">Talks</a>
+            <a class="nav-link" href="../index.html#researches">Experience</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Blog</a>
+            <a class="nav-link" href="../papers/Lesley_Research_CV.pdf">CV</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="post-hero">
+      <div class="container">
+        <div class="post-kicker">
+          <a href="index.html"><i class="fa-solid fa-arrow-left fa-fw"></i> Blog</a> &nbsp;/&nbsp;
+          <span class="series">AI Reliability for Systems</span>
+        </div>
+
+        <h1 class="post-title">Are AI-evolved systems ready for primetime &mdash; <span class="flag">Not yet!</span></h1>
+
+        <p class="post-subtitle">Exposing the Achilles&rsquo; heel of AI-evolved systems</p>
+
+        <div class="post-byline">
+          <span class="post-authors">
+            <a href="https://lesleychou.github.io/">Lesley Zhou</a>,
+            <a href="https://users.ece.cmu.edu/~vsekar/">Vyas Sekar</a>
+          </span>
+          <span class="sep">&middot;</span>
+          <span>Sep 29, 2026</span>
+          <span class="sep">&middot;</span>
+          <span>5 min read</span>
+        </div>
+
+        <p class="post-crosspost">
+          <i class="fa-solid fa-arrow-up-right-from-square fa-fw"></i>
+          Also posted on the
+          <a href="https://cylabcyberautonomy.github.io/blogposts/are-ai-evolved-systems-ready-for-primetime-not-yet/">CyLab Cyber Autonomy</a>.
+        </p>
+      </div>
+    </header>
+
+    <div class="container">
+
+      <div class="tldr">
+        <b>TL;DR</b>
+        <ul>
+          <li>Researchers across industry and academia are using AI agents to evolve systems, reporting impressive gains (LLM routing, R&amp;D, etc).</li>
+          <li>But these gains can give us false confidence. We find AI-evolved systems may crash or violate their own specifications under new conditions.</li>
+          <li>We built AIChilles to automatically uncover these weaknesses.</li>
+          <li>We should temper the exuberance around AI-evolved solutions and stress test their performance and reliability.</li>
+        </ul>
+      </div>
+
+      <figure class="post-fig is-bare">
+        <img src="images/aichilles-overview.svg"
+             alt="Diagram. An initial program P and a workload W feed AI evolution, which produces an evolved program P′. Both P and P′ go into AIChilles, which searches new inputs W′ and reports weakness types: system crashes, slowdowns, memory blowups, or P′ performing worse than the original P.">
+        <figcaption>
+          <b>Fig. 1.</b> AI evolution optimizes a program for a higher KPI on a fixed workload <em>W</em>.
+          AIChilles<sup class="cite"><a href="#ref-1">[1]</a></sup> takes the initial program <em>P</em> and the
+          evolved program <em>P&prime;</em>, searches new inputs <em>W&prime;</em>, and exposes where
+          <em>P&prime;</em> crashes, slows down, blows up memory, or performs worse than <em>P</em>.
+        </figcaption>
+      </figure>
+
+      <article class="post-body">
+
+        <p>
+          AI-driven system evolution promises to revolutionize how we innovate computer systems.
+          Traditionally, optimizing system heuristics takes specialized expertise and huge engineering
+          effort. AI evolution provides a new possibility: why not give AI agents a system program, an
+          evaluator, and enough iterations, and let them automatically discover better implementations?
+        </p>
+        <p>
+          Recent work (e.g., <a href="https://arxiv.org/pdf/2602.20133">AdaEvolve</a><sup class="cite"><a href="#ref-2">[2]</a></sup>,
+          <a href="https://dl.acm.org/doi/10.1145/3786335.3813138">Engram</a><sup class="cite"><a href="#ref-3">[3]</a></sup>,
+          <a href="https://github.com/algorithmicsuperintelligence/openevolve">OpenEvolve</a><sup class="cite"><a href="#ref-4">[4]</a></sup>,
+          <a href="https://www.snowflake.com/en/blog/engineering/optimize-snowflake-ai-systems-cocoevolve/">CoCoEvolve</a> (Snowflake)<sup class="cite"><a href="#ref-5">[5]</a></sup>,
+          <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/">AlphaEvolve</a> (Google DeepMind)<sup class="cite"><a href="#ref-6">[6]</a></sup>,
+          <a href="https://sfr-autornd.github.io/">SFR-AutoR&amp;D</a> (Salesforce)<sup class="cite"><a href="#ref-7">[7]</a></sup>,
+          <a href="https://research.google/pubs/archagent-v2-a-case-study-with-the-data-prefetching-championship/">ArchAgent</a> (Google)<sup class="cite"><a href="#ref-8">[8]</a></sup>)
+          claims impressive improvements across a wide range of systems tasks. We got excited and wanted
+          to see: are these improvements robust and generalizable to the broader system? However, we soon
+          found that the promise was not as good as it seemed.
+        </p>
+
+        <h2 id="aichilles">AIChilles can automatically expose weaknesses in AI-evolved systems</h2>
+        <p>
+          When we started testing these systems, we noticed some weaknesses. The evolved programs often
+          found a solution that worked well on the benchmark, but failed badly on new input workloads. We
+          also observed that the program could crash at runtime, become much slower as the workload
+          scaled, consume substantially more memory, or return a worse solution.
+        </p>
+        <p>
+          Motivated by this observation, we designed <strong>AIChilles</strong>
+          (<a href="https://arxiv.org/abs/2606.15834">paper</a>, <a href="https://github.com/lesleychou/aichilles">code</a>)<sup class="cite"><a href="#ref-1">[1]</a></sup>,
+          an agentic system for finding the &ldquo;<a href="https://en.wikipedia.org/wiki/Achilles%27_heel">Achilles&rsquo; heel</a>&rdquo;
+          of AI-evolved system programs. AIChilles takes as input an original program and its AI-evolved
+          version. It infers the valid workload space, then searches for concrete workloads where the
+          evolved program behaves much worse than the original program.
+        </p>
+
+        <figure class="post-fig is-narrow">
+          <div class="post-chart" id="fig-scalability" role="img"
+               aria-label="Line chart, log scale. Worst-case execution time versus number of GPUs. The initial program P stays near 5 to 7 milliseconds from 2 to 32 GPUs. Engram's evolved program rises from 0.05 seconds at 2 GPUs to 89 seconds at 32 GPUs. OpenEvolve's evolved program rises from 7 milliseconds to 27 milliseconds."></div>
+          <figcaption>
+            <b>Fig. 2.</b> Worst-case execution time (log scale) as the number of GPUs in the workload grows.
+            <em>P</em> is the initial program; each <em>P&prime;</em> is the program that
+            Engram<sup class="cite"><a href="#ref-3">[3]</a></sup> or OpenEvolve<sup class="cite"><a href="#ref-4">[4]</a></sup>
+            evolved from it. AIChilles<sup class="cite"><a href="#ref-1">[1]</a></sup> searches beyond the
+            workloads used by the original evaluator and finds valid, larger inputs where the evolved
+            programs scale badly: at 32 GPUs, Engram&rsquo;s <em>P&prime;</em> takes 89&nbsp;s and
+            OpenEvolve&rsquo;s 0.027&nbsp;s, while <em>P</em> stays around 6&nbsp;ms.
+          </figcaption>
+        </figure>
+
+        <p>
+          We reported our findings to teams working on AI-evolution frameworks
+          (AdaEvolve<sup class="cite"><a href="#ref-2">[2]</a></sup> and Engram<sup class="cite"><a href="#ref-3">[3]</a></sup>),
+          and they acknowledged the issues found by AIChilles. They agree that when an evaluator rewards
+          only benchmark score, AI evolution may exploit that objective aggressively and reveal gaps in
+          the evaluator (see <a href="https://ucbskyadrs.github.io/blog/aichilles/">blog</a>).
+        </p>
+
+        <h2 id="specs">Do specifications and multiagent workflows fix this?</h2>
+        <p>
+          More recently, systems such as <a href="https://skydiscover-ai.github.io/blog-skysynth.html">SkySynth</a><sup class="cite"><a href="#ref-9">[9]</a></sup>
+          try to address this concern with explicit specifications and structured multi-agent workflows.
+          Instead of asking one agent to optimize the program, SkySynth first asks an AI agent to propose
+          the specification. Different agents then generate implementations, tests, and checks against
+          these requirements before accepting a solution. The authors claim that this structured workflow
+          could avoid the reward-hacking problem in evolved programs.
+        </p>
+        <p>
+          This made us wonder: perhaps explicit specifications and multiple testing agents could
+          eliminate the failures we had seen before? So we tested SkySynth with AIChilles on its
+          LLM-router application (AIChilles currently supports Python-based programs). Unfortunately, we
+          still found evidence that the evolved program violated its own specification!
+        </p>
+        <p>
+          We ran AIChilles on the SkySynth-generated program, and found that it violated its own
+          generated specification under new workloads. The specification explicitly required every
+          request to end in one of two states: answered or refused. But under a severe capacity shortage,
+          the evolved router repeatedly retried some requests without ever answering or refusing them.
+        </p>
+        <p>
+          We also found the full multi-agent evolution loop was expensive. A single run on one input
+          configuration could take more than eight hours (and often exceed the Claude Pro token session
+          limit). This makes it hard to run such a multi-agent workflow as &ldquo;just-in-time.&rdquo;
+        </p>
+
+        <h2 id="lesson">The new &ldquo;bitter&rdquo; lesson for AI-evolved systems</h2>
+        <p>
+          When an AI tells us it has improved a system, we should not only ask, &ldquo;How much better is
+          the score?&rdquo; We should also ask, <strong>&ldquo;Is this score actually a faithful metric,
+          and does it represent what we want to improve in the system?&rdquo;</strong>
+        </p>
+        <p>
+          Before we blame AI agents for reward hacking, we should first check <strong>whether we gave
+          them an incomplete signal to optimize</strong> in the first place.
+        </p>
+
+        <div class="callout cta">
+          <p>
+            If you want to run AIChilles on your own AI-evolved system, please let us know!
+            <button type="button" class="copy-email" data-u="leszhou" data-d="umd.edu" aria-label="Copy email address" title="Copy email address"><i class="fa-regular fa-envelope"></i><span class="copy-email-tip" role="status"></span></button>
+          </p>
+          <p>Or feel free to open an issue on the <a href="https://github.com/lesleychou/aichilles">code repo</a> and we will test them!</p>
+        </div>
+
+        <h2 id="references">References</h2>
+        <ol class="ref-list">
+          <li id="ref-1"><em>AIChilles: Automatically Uncovering Hidden Weaknesses in AI-Evolved Systems.</em> arXiv:2606.15834, 2026. Yajie Zhou, Ao Li, Ashwin Silla, Zaoxing Liu, Vyas Sekar. <a href="https://arxiv.org/abs/2606.15834">[arXiv]</a> <a href="https://github.com/lesleychou/aichilles">[code]</a></li>
+          <li id="ref-2"><em>AdaEvolve: Adaptive LLM Driven Zeroth-Order Optimization.</em> arXiv:2602.20133, 2026. Mert Cemri, Shubham Agrawal, Akshat Gupta, et al. <a href="https://arxiv.org/abs/2602.20133">[arXiv]</a></li>
+          <li id="ref-3"><em>Improving Coherence and Persistence in Agentic AI for System Optimization</em> (Engram). Proceedings of the ACM Conference on AI and Agentic Systems, 2026. Pantea Karimi, Kimia Noorbakhsh, Mohammad Alizadeh, Hari Balakrishnan. <a href="https://dl.acm.org/doi/10.1145/3786335.3813138">[doi]</a></li>
+          <li id="ref-4"><em>OpenEvolve.</em> Open-source project, GitHub. <a href="https://github.com/algorithmicsuperintelligence/openevolve">[code]</a></li>
+          <li id="ref-5"><em>CoCoEvolve: Evolutionary Optimization for AI Systems.</em> Snowflake Engineering Blog. <a href="https://www.snowflake.com/en/blog/engineering/optimize-snowflake-ai-systems-cocoevolve/">[blog]</a></li>
+          <li id="ref-6"><em>AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms.</em> Google DeepMind blog. <a href="https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/">[blog]</a></li>
+          <li id="ref-7"><em>SFR-AutoR&amp;D.</em> Salesforce AI Research. <a href="https://sfr-autornd.github.io/">[project]</a></li>
+          <li id="ref-8"><em>ArchAgent v2: A Case Study with the Data Prefetching Championship.</em> Google Research. <a href="https://research.google/pubs/archagent-v2-a-case-study-with-the-data-prefetching-championship/">[paper]</a></li>
+          <li id="ref-9"><em>Building Specialized Systems We Can Trust with Agents</em> (SkySynth). SkyDiscover blog. <a href="https://skydiscover-ai.github.io/blog-skysynth.html">[blog]</a></li>
+        </ol>
+
+      </article>
+    </div>
+
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 mt-5 border-top">
+        <div>
+          <span class="mb-3 text-body-secondary">&copy; 2025 Lesley (Yajie) Zhou. All rights reserved.</span>
+          <br>
+          <span class="text-body-secondary">This page was created using <a href="http://pages.github.com">GitHub Pages</a>.</span>
+        </div>
+        <div>
+          <i class="fa-solid fa-envelope fa-fw"></i>
+          leszhou@umd.edu
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fig. 2: Vega-Lite chart. Values are the worst-case (max) execution time per GPU
+         count, copied from the CyLab post's spec with its theme tokens resolved. -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script type="application/json" id="fig-scalability-spec">{"$schema":"https://vega.github.io/schema/vega-lite/v5.json","width":"container","height":320,"data":{"values":[{"program":"P (initial program)","gpus":2,"time":0.007432,"runs":2},{"program":"P (initial program)","gpus":5,"time":0.004716,"runs":1},{"program":"P (initial program)","gpus":6,"time":0.004774,"runs":1},{"program":"P (initial program)","gpus":7,"time":0.004861,"runs":1},{"program":"P (initial program)","gpus":10,"time":0.004731,"runs":1},{"program":"P (initial program)","gpus":11,"time":0.005317,"runs":1},{"program":"P (initial program)","gpus":16,"time":0.005141,"runs":3},{"program":"P (initial program)","gpus":32,"time":0.006205,"runs":7},{"program":"P′ Engram-evolved program","gpus":2,"time":0.05381,"runs":2},{"program":"P′ Engram-evolved program","gpus":5,"time":0.478665,"runs":1},{"program":"P′ Engram-evolved program","gpus":6,"time":0.655164,"runs":1},{"program":"P′ Engram-evolved program","gpus":7,"time":1.177487,"runs":1},{"program":"P′ Engram-evolved program","gpus":10,"time":2.970752,"runs":1},{"program":"P′ Engram-evolved program","gpus":11,"time":3.768262,"runs":1},{"program":"P′ Engram-evolved program","gpus":16,"time":11.546382,"runs":3},{"program":"P′ Engram-evolved program","gpus":32,"time":88.52529,"runs":7},{"program":"P′ OpenEvolve-evolved program","gpus":2,"time":0.007186,"runs":2},{"program":"P′ OpenEvolve-evolved program","gpus":5,"time":0.005564,"runs":1},{"program":"P′ OpenEvolve-evolved program","gpus":6,"time":0.005814,"runs":1},{"program":"P′ OpenEvolve-evolved program","gpus":7,"time":0.005477,"runs":1},{"program":"P′ OpenEvolve-evolved program","gpus":10,"time":0.006165,"runs":1},{"program":"P′ OpenEvolve-evolved program","gpus":11,"time":0.006566,"runs":1},{"program":"P′ OpenEvolve-evolved program","gpus":16,"time":0.009667,"runs":3},{"program":"P′ OpenEvolve-evolved program","gpus":32,"time":0.026979,"runs":7}]},"encoding":{"x":{"field":"gpus","type":"quantitative","title":"#GPUs","scale":{"domain":[0,34],"nice":false},"axis":{"values":[2,8,16,24,32],"labelFontSize":14,"titleFontSize":15,"titlePadding":10,"labelPadding":6,"tickSize":6}},"y":{"field":"time","type":"quantitative","title":"Execution time (s)","scale":{"type":"log","domain":[0.003,150]},"axis":{"values":[0.01,0.1,1,10,100],"labelExpr":"datum.value >= 1 ? format(datum.value, 'd') : format(datum.value, '')","labelFontSize":14,"titleFontSize":15,"titlePadding":10,"labelPadding":6,"tickSize":6}},"color":{"field":"program","type":"nominal","title":null,"scale":{"domain":["P (initial program)","P′ Engram-evolved program","P′ OpenEvolve-evolved program"],"range":["#2a78d6","#1baf7a","#eb6834"]},"legend":{"orient":"top","direction":"vertical","labelFontSize":14,"symbolSize":110,"symbolStrokeWidth":0,"columnPadding":18,"offset":14,"symbolDash":[],"labelLimit":320,"rowPadding":6}},"shape":{"field":"program","type":"nominal","title":null,"scale":{"domain":["P (initial program)","P′ Engram-evolved program","P′ OpenEvolve-evolved program"],"range":["circle","square","triangle-up"]}}},"layer":[{"mark":{"type":"line","strokeWidth":2.5},"encoding":{"strokeDash":{"field":"program","type":"nominal","title":null,"scale":{"domain":["P (initial program)","P′ Engram-evolved program","P′ OpenEvolve-evolved program"],"range":[[6,4],[1,0],[1,0]]},"legend":null}}},{"mark":{"type":"point","filled":true,"size":95,"opacity":1,"stroke":"#ffffff","strokeWidth":1.5}},{"_comment":"invisible, larger hit targets carrying the tooltip","mark":{"type":"point","size":400,"opacity":0,"filled":true},"encoding":{"tooltip":[{"field":"program","title":"Program"},{"field":"gpus","title":"#GPUs"},{"field":"time","title":"Worst-case time (s)","format":".4~g"},{"field":"runs","title":"Workloads"}]}}],"autosize":{"type":"fit-x","contains":"padding"}}</script>
+    <script>
+      (function () {
+        var el = document.getElementById('fig-scalability');
+        if (!el || !window.vegaEmbed) { return; }
+        var spec = JSON.parse(document.getElementById('fig-scalability-spec').textContent);
+        spec.config = {
+          font: 'Inter, sans-serif',
+          view: { stroke: null },
+          axis: { labelColor: '#495057', titleColor: '#212529', gridColor: '#f1f3f5', domainColor: '#ced4da', tickColor: '#ced4da' },
+          legend: { labelColor: '#343a40' }
+        };
+        vegaEmbed(el, spec, { actions: false, renderer: 'svg' });
+      })();
+    </script>
+
+    <script>
+      // Copy-email button (.copy-email with data-u / data-d): the address is only
+      // assembled on click, so it never appears whole in the callout.
+      (function () {
+        document.addEventListener('click', function (e) {
+          var b = e.target.closest('.copy-email');
+          if (!b) { return; }
+          var addr = b.dataset.u + '@' + b.dataset.d;
+          var tip = b.querySelector('.copy-email-tip');
+          function done(msg) {
+            if (!tip) { return; }
+            tip.textContent = msg;
+            tip.classList.add('show');
+            clearTimeout(b._t);
+            b._t = setTimeout(function () { tip.classList.remove('show'); }, 1600);
+          }
+          function fallback() {
+            var t = document.createElement('textarea');
+            t.value = addr;
+            t.setAttribute('readonly', '');
+            t.style.position = 'fixed';
+            t.style.opacity = '0';
+            document.body.appendChild(t);
+            t.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (x) {}
+            t.remove();
+            done(ok ? 'Email copied' : 'Copy failed');
+          }
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(addr).then(function () { done('Email copied'); }, fallback);
+          } else {
+            fallback();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
