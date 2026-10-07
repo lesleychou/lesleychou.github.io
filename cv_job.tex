@@ -1,0 +1,328 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Curriculum Vitae -- Lesley (Yajie) Zhou
+% Academic job market version
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,letterpaper]{article}
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{times}                % Times Roman
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+
+% Links stay clickable but print in black
+\hypersetup{
+    colorlinks=true,
+    allcolors=black,
+    pdfauthor={Lesley (Yajie) Zhou},
+    pdftitle={Curriculum Vitae -- Lesley (Yajie) Zhou}
+}
+
+% Section headings: small caps with a thin rule
+\titleformat{\section}
+  {\normalsize\bfseries\scshape}
+  {}
+  {0em}
+  {}
+  [\vspace{-0.6em}\rule{\textwidth}{0.4pt}]
+\titlespacing*{\section}{0pt}{1.1em}{0.6em}
+
+\titleformat{\subsection}
+  {\normalsize\itshape}
+  {}
+  {0em}
+  {}
+\titlespacing*{\subsection}{0pt}{0.6em}{0.2em}
+
+% Running footer with name and page numbers
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\footnotesize Lesley (Yajie) Zhou}
+\fancyfoot[R]{\footnotesize Page \thepage\ of \pageref*{LastPage}}
+
+% Lists
+\setlist{leftmargin=*,topsep=0.2em,itemsep=0.25em,parsep=0pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+%----------------------------------------------------------------------------------------
+%    CUSTOM COMMANDS
+%----------------------------------------------------------------------------------------
+
+% \entry{Institution}{Dates}{Role / degree}{Details (may be empty)}
+\newcommand{\entry}[4]{%
+  \textbf{#1} \hfill #2 \\
+  \textit{#3}%
+  \if\relax\detokenize{#4}\relax\else \\ #4\fi
+  \par\vspace{0.55em}%
+}
+
+% \publication{Authors}{Title}{Venue}{Year}
+\newcommand{\publication}[4]{%
+  \item #1. \textit{#2}. #3, #4.
+}
+
+% Dated list item
+\newcommand{\dateditem}[2]{\item #1 \hfill #2}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%    HEADER
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+  {\LARGE\bfseries Lesley (Yajie) Zhou} \\[0.5em]
+  Ph.D. Candidate in Computer Science, University of Maryland, College Park \\[0.2em]
+  \href{mailto:leszhou@umd.edu}{leszhou@umd.edu} \quad$\cdot$\quad
+  \href{https://lesleychou.github.io/}{lesleychou.github.io}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%    RESEARCH INTERESTS
+%----------------------------------------------------------------------------------------
+
+\section{Research Interests}
+AI Reliability for Systems; Autonomous NetOps and SysOps; Robustness of AI-Driven Systems.
+
+%----------------------------------------------------------------------------------------
+%    EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\entry{University of Maryland, College Park}{2023 -- Present}
+  {Ph.D. in Computer Science}
+  {Advisor: Prof.\ Zaoxing (Alan) Liu}
+
+\entry{Boston University}{2021 -- 2023}
+  {Ph.D. in Computer Engineering}
+  {Advisor: Prof.\ Zaoxing (Alan) Liu}
+
+\entry{Korea Advanced Institute of Science and Technology (KAIST)}{2020}
+  {M.S. in Electrical Engineering}
+  {Advisors: Prof.\ Yung Yi and Prof.\ Dongsu Han}
+
+\entry{Xidian University}{2018}
+  {B.E. in Computer Science and Technology}
+  {Bachelor Dissertation Award (top 1\% in CS Department)}
+
+%----------------------------------------------------------------------------------------
+%    RESEARCH EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Research Experience}
+
+\entry{Carnegie Mellon University}{Oct 2025 -- Present}
+  {Visiting Researcher}
+  {Host: Prof.\ Vyas Sekar}
+
+\entry{Microsoft Research, Redmond, WA}{May -- Aug 2025}
+  {Research Intern, Network Research Group}
+  {Mentors: Siva Kesava Reddy Kakarla, Ryan Beckett, Behnaz Arzani}
+
+\entry{Microsoft Research, Redmond, WA}{Summers 2023 \& 2024}
+  {Research Intern, Network Research Group}
+  {Mentors: Kevin Hsieh, Sathiya Kumaran Mani, Srikanth Kandula}
+
+%----------------------------------------------------------------------------------------
+%    PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+\section{Publications}
+
+\subsection{Conference and Workshop Papers}
+
+\begin{enumerate}[label={[C\arabic*]},leftmargin=2.6em]
+    \publication{Yen-Ru Chin, Milind Srivastava, \textbf{Yajie Zhou}, Giulia Fanti, Vyas Sekar}
+      {T-pack: Structure-aware Generative Compression for Efficient Distributed Tracing}
+      {USENIX Symposium on Networked Systems Design and Implementation (NSDI)}{2027}
+
+    \publication{\textbf{Yajie Zhou}, Jiajun Ruan, Eric S. Wang, Sadjad Fouladi, Francis Y. Yan, Kevin Hsieh, Zaoxing Liu}
+      {NetArena: Dynamic Benchmarks for AI Agents in Network Automation}
+      {International Conference on Learning Representations (ICLR)}{2026}
+
+    \publication{\textbf{Yajie Zhou}, Nengneng Yu, Tuo Zhao, Zaoxing Liu}
+      {Tidal: Tackling Concept Drift in Provenance-based Advanced Persistent Threats Detection}
+      {New Ideas in Networked Systems (NINeS)}{2026}
+
+    \publication{\textbf{Yajie Zhou}, Fuheng Zhao, Eric Wang, Ayse Coskun, Divyakant Agrawal, Amr El Abbadi, Zaoxing Liu}
+      {PrvTel: Lightweight Models for Private and Accurate Telemetry Data Retention}
+      {USENIX Symposium on Networked Systems Design and Implementation (NSDI)}{2026}
+
+    \publication{\textbf{Yajie Zhou}, Kevin Hsieh, Sathiya Kumaran Mani, Srikanth Kandula, Zaoxing Liu}
+      {MeshAgent: Enabling Reliable Network Management with Large Language Models}
+      {ACM SIGMETRICS International Conference on Measurement and Modeling of Computer Systems}{2026}
+
+    \publication{Sathiya Kumaran Mani, Kevin Hsieh, Santiago Segarra, Ranveer Chandra, \textbf{Yajie Zhou}, Srikanth Kandula}
+      {Securing Public Cloud Networks with Efficient Role-based Micro-Segmentation}
+      {USENIX Symposium on Networked Systems Design and Implementation (NSDI)}{2025}
+
+    \publication{\textbf{Yajie Zhou*}, Nengneng Yu*, Zaoxing Liu}
+      {Towards Interactive Research Agents for Internet Incident Investigation}
+      {ACM Workshop on Hot Topics in Networks (HotNets)}{2023}
+
+    \publication{Sathiya Kumaran Mani, \textbf{Yajie Zhou}, Kevin Hsieh, Santiago Segarra, Trevor Eberl, Eliran Azulai, Ido Frizler, Ranveer Chandra, Srikanth Kandula}
+      {Enhancing Network Management Using Code Generated by Large Language Models}
+      {ACM Workshop on Hot Topics in Networks (HotNets)}{2023}
+
+    \publication{Zhengxu Xia*, \textbf{Yajie Zhou*}, Francis Y. Yan, Junchen Jiang}
+      {Genet: Automatic Curriculum Generation for Learning Adaptation in Networking}
+      {ACM SIGCOMM Conference}{2022}
+\end{enumerate}
+
+\subsection{Demos, Posters and Short Papers}
+
+\begin{enumerate}[label={[S\arabic*]},leftmargin=2.6em]
+    \publication{Fenghao Dong, Yucheng Yin, \textbf{Yajie Zhou}, Peilin Xin, Shinan Liu, Vyas Sekar}
+      {DeePCAP: Enabling High-Fidelity and Cost-Efficient Archival Packet Trace Storage}
+      {ACM SIGCOMM Conference (Poster)}{2026}
+
+    \publication{\textbf{Yajie Zhou}, Francis Y. Yan, Kevin Hsieh, Zaoxing Liu}
+      {NetArena Adaptation for Next Waves of Network Benchmarks}
+      {ACM SIGCOMM Conference (Demo)}{2026}
+
+    \publication{\textbf{Yajie Zhou}, Jason Li, Gianluca Stringhini, Ayse K. Coskun, Zaoxing Liu}
+      {Enabling Privacy-preserving Multidimensional Network Telemetry with Autoencoders}
+      {IEEE International Conference on Cloud Engineering (IC2E)}{2023}
+\end{enumerate}
+
+\subsection{Preprints}
+
+\begin{enumerate}[label={[R\arabic*]},leftmargin=2.6em]
+    \publication{\textbf{Yajie Zhou}, Ao Li, Ashwin Silla, Zaoxing Liu, Vyas Sekar}
+      {AIChilles: Automatically Uncovering Hidden Weaknesses in AI-Evolved Systems}
+      {arXiv:2606.15834}{2026}
+
+    \publication{Milind Srivastava, Zeying Zhu, \textbf{Yajie Zhou}, Yancheng Yuan, Fenghao Dong, Peilin Xin, Zaoxing Liu, Vyas Sekar}
+      {ASAP: Reimagining the Data Lifecycle using Application Semantic-Aware Processing}
+      {arXiv:2608.12735}{2026}
+
+    \publication{Jialin Zhang, Fenghao Dong, \textbf{Yajie Zhou}, Vyas Sekar, Shinan Liu}
+      {TabQueryBench: A Query-Centric Benchmark for Synthetic Tabular Data}
+      {arXiv:2607.03926}{2026}
+
+    \publication{Sayan Sinha, Vipul Harsh, \textbf{Yajie Zhou}, Marko Morrison, B. Aditya Prakash, Vyas Sekar, Hui Zhang}
+      {Constrained Creativity for SysOps Agents}
+      {Preprint, Carnegie Mellon University}{2026}
+\end{enumerate}
+{\small * denotes equal contribution.}
+
+\subsection{Patents}
+
+\begin{enumerate}[label={[P\arabic*]},leftmargin=2.6em]
+    \item Sathiya Kumaran Mani, \textbf{Yajie Zhou}, Kevin Hsieh, Santiago Segarra, Ranveer Chandra, Srikanth Kandula.
+      \textit{Graph Analysis and Manipulation}. US Patent Application MS\#413451-US-NP, filed 2023, registered January 2025.
+    \item \textbf{Yajie Zhou}, Kasim Te.
+      \textit{Method and Apparatus for Transmitting Video Data}. Korean Patent Application 10-2020-0141018, registered October 2020.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%    HONORS AND AWARDS
+%----------------------------------------------------------------------------------------
+
+\section{Honors and Awards}
+
+\begin{itemize}[label={},leftmargin=0pt]
+  \dateditem{Ann G. Wylie Dissertation Fellowship, University of Maryland (top 2 in CS)}{2026}
+  \dateditem{Winner, Berkeley AgentX--AgentBeats Competition, Coding Agent Track (NetArena; 1,300+ registrations)}{2026}
+  \dateditem{KAUST Rising Stars in AI Symposium (top 6\% of global applicants)}{2026}
+  \dateditem{N2Women Young Researcher Fellowship}{2022, 2026}
+  \dateditem{CRA-WP Grad Cohort for Women}{2022}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%    INVITED TALKS
+%----------------------------------------------------------------------------------------
+
+\section{Invited Talks}
+
+\begin{itemize}[label={},leftmargin=0pt]
+  \dateditem{Carnegie Bosch Institute (host: Dr.\ Jorge Guajardo Merchan)}{Dec 2026}
+  \dateditem{Princeton University (host: Prof.\ Maria Apostolaki)}{Oct 2026}
+  \dateditem{University of Illinois Urbana-Champaign (host: Prof.\ Francis Y. Yan)}{Oct 2026}
+  \dateditem{University of Michigan, Ann Arbor (host: Prof.\ Ang Chen)}{Jun 2026}
+  \dateditem{The University of Hong Kong (host: Prof.\ Shinan Liu)}{Feb 2026}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%    MEDIA COVERAGE
+%----------------------------------------------------------------------------------------
+
+\section{Media Coverage}
+
+\begin{itemize}[label={},leftmargin=0pt]
+  \dateditem{\textit{AI-Driven Research for Systems}, UC Berkeley Sky Computing Lab (featuring AIChilles)}{Jul 2026}
+  \dateditem{\textit{Testing AI Before It Touches the Network}, UMD Department of Computer Science (featuring NetArena)}{Mar 2026}
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%    TEACHING
+%----------------------------------------------------------------------------------------
+
+\section{Teaching Experience}
+
+\entry{Boston University}{Fall 2022, Spring 2023}
+  {Teaching Assistant, EC441: Introduction to Networking}
+  {}
+
+%----------------------------------------------------------------------------------------
+%    MENTORING
+%----------------------------------------------------------------------------------------
+
+\section{Mentoring}
+
+\begin{itemize}[label={},leftmargin=0pt]
+  \item \textit{Carnegie Mellon University:} Steven Dong, Danny Chin, Ashwin Silla
+  \item \textit{University of Maryland:} Eric Wang, Eesha Kurella
+  \item \textit{Boston University:} Nengneng Yu, Rashid Kolaghassi, Maxwell Malamut, Robert D'Antonio
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%    SERVICE
+%----------------------------------------------------------------------------------------
+
+\section{Professional Service}
+
+\subsection{Conference Service}
+\begin{itemize}[label={},leftmargin=0pt]
+  \item Program Committee: Sensors S\&P Workshop 2025
+  \item Reviewer: NeurIPS 2026, ICLR 2027
+  \item Shadow Program Committee: SIGMETRICS 2026, EuroSys 2026
+  \item Artifact Evaluation Committee: SIGCOMM 2025
+  \item Web Chair: HotNets 2025
+\end{itemize}
+
+\subsection{Community Service}
+\begin{itemize}[label={},leftmargin=0pt]
+  \item Event Host, N2Women Young Researcher Workshop (2022, 2026). Connected mentors from academia and industry with women Ph.D.\ students and postdocs to share career development advice.
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%    SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Technical Skills}
+
+\begin{itemize}[label={},leftmargin=0pt]
+  \item \textit{Programming:} Python, C++, JavaScript, \LaTeX
+  \item \textit{Machine Learning:} PyTorch, TensorFlow, Keras, LangChain, Hugging Face
+  \item \textit{Systems and Tools:} Docker, Git, Linux, AWS, Azure
+\end{itemize}
+
+\end{document}
