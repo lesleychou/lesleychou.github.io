@@ -300,8 +300,9 @@ body {
 }
 
 .post-card .card-dek {
-  font-size: 0.82rem;
-  color: #6c757d;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #495057;
   line-height: 1.55;
   margin: 0;
   flex: 1;
@@ -386,9 +387,10 @@ body {
 
 /* Italic one-line hook under the title (the reference post's "subtitle"). */
 .post-subtitle {
-  font-size: 1.12rem;
+  font-size: 1.3rem;
   font-style: italic;
-  color: #55606c;
+  font-weight: 500;
+  color: #343a40;
   line-height: 1.5;
   margin: -0.2rem 0 0.9rem;
   max-width: 60ch;
@@ -1065,4 +1067,55 @@ sup.cite a:hover {
     text-decoration: none;
     color: #000 !important;
   }
+}
+
+/* Side-by-side figure panels (diagram + chart, or two diagrams). Stack on a phone. */
+.fig-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+.fig-row > * {
+  min-width: 0;
+}
+/* Two images at one shared height: each grows in proportion to its aspect
+   ratio (--ar, set inline), so both columns end up exactly as tall. */
+.fig-row.is-compare {
+  display: flex;
+  align-items: flex-start;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.fig-row.is-compare > img {
+  flex: calc(var(--ar)) 1 0;
+  width: 0;
+}
+.fig-row .post-chart.vega-embed {
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .fig-row {
+    grid-template-columns: 1fr;
+  }
+  .fig-row.is-compare {
+    flex-direction: column;
+  }
+  .fig-row.is-compare > img {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Comparison table: wrap long cells, highlight our row */
+.post-body .cc-table th {
+  white-space: normal;
+  vertical-align: bottom;
+}
+.post-body .cc-table td {
+  vertical-align: top;
+  line-height: 1.5;
+}
+.post-body .cc-table tr.is-ours td {
+  background: #fff7ed;
 }
