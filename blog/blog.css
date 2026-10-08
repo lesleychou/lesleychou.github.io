@@ -93,10 +93,10 @@ body {
 }
 
 .series-standfirst {
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   line-height: 1.6;
   color: #55606c;
-  max-width: 50ch;
+  max-width: 100%; /* wide enough that each sentence holds its own line on desktop */
   margin: 0;
 }
 
