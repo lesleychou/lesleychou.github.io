@@ -181,6 +181,21 @@
       .job-market i {
         color: #d99a00;
       }
+      /* Blog-launch highlight: same shape as .job-market, blue accent */
+      .job-market.blog-launch {
+        background: #eef5ff;
+        border-color: #c5dcff;
+        border-left-color: #2a78d6;
+        color: #1d3f6e;
+      }
+      .job-market.blog-launch i {
+        color: #2a78d6;
+      }
+      .job-market.blog-launch a {
+        color: #0d5bc6;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
       
       .paper-title {
         font-size: 1.1rem;
@@ -378,6 +393,10 @@
       <div class="job-market">
         <i class="fa-solid fa-bullhorn fa-fw"></i>
         <span>I will be on the academic job market this year!</span>
+      </div>
+      <div class="job-market blog-launch">
+        <i class="fa-solid fa-pen-nib fa-fw"></i>
+        <span>Launched a <a href="blog/index.html">new blog series</a> sharing my latest research and collaboration in under 5-min reads. Stay tuned!</span>
       </div>
       <p>
         I build reliable AI for critical systems. My research develops methods to make AI-driven system operations more robust, safe, and scalable.
