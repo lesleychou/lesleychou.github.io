@@ -883,10 +883,6 @@ body {
 .ref-list li {
   scroll-margin-top: 5rem;
 }
-/* Clicking a [n] citation highlights the reference it lands on */
-.ref-list li:target {
-  color: #0d6efd;
-}
 .ref-list em {
   color: #212529;
 }
